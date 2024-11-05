@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Progress Report",
+  "description": "A progress report indicating completion status of an operation",
+  "type": "object",
+  "required": ["type", "expectedTotal", "completed"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "progress",
+      "description": "Identifies this as a progress report"
+    },
+    "expectedTotal": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The total amount of work to be done"
+    },
+    "completed": {
+      "type": "integer", 
+      "minimum": 0,
+      "description": "The amount of work completed so far"
+    },
+    "message": {
+      "type": "string",
+      "description": "Optional message describing the operation"
+    },
+    "units": {
+      "type": "string",
+      "enum": [
+        "BYTES",
+        "ABSTRACT_CONSISTENT",
+        "ABSTRACT_INCONSISTENT"
+      ],
+      "description": "The units of measurement for the progress values"
+    },
+    "subReports": {
+      "type": "array",
+      "items": {
+        "$ref": "#",
+        "description": "Nested progress reports for sub-operations"
+      }
+    }
+  }
+}

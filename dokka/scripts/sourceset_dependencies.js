@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":progress4j-terminal:dokkaHtmlPartial/main":[],":progress4j-utils:dokkaHtmlPartial/main":[],":progress4j-api:dokkaHtmlPartial/main":[],":progress4j-demo:dokkaHtmlPartial/main":[]}'

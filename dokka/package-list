@@ -1,0 +1,12 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:////PointingToDeclaration/progress4j-demo/[root]/index.html
+$dokka.location:/ProgressTrackingDemo///PointingToDeclaration/progress4j-demo/[root]/-progress-tracking-demo/index.html
+$dokka.location:/ProgressTrackingDemo/ProgressTrackingDemo/#/PointingToDeclaration/progress4j-demo/[root]/-progress-tracking-demo/-progress-tracking-demo.html
+$dokka.location:/ProgressTrackingDemo/main/#java.lang.String[]/PointingToDeclaration/progress4j-demo/[root]/-progress-tracking-demo/main.html
+module:progress4j-api
+dev.progress4j.api
+module:progress4j-terminal
+dev.progress4j.terminal
+module:progress4j-utils
+dev.progress4j.utils
