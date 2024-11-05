@@ -1,0 +1,82 @@
+site_name: hshell
+site_url: https://hshell.conveyor.dev
+
+nav:
+  - Introduction: index.md
+  - IntelliJ plugin: intellij.md
+  - Shell: shell.md
+  - Remote shells: ssh.md
+  - Executing programs: executing-programs.md
+  - Defining a CLI: cli.md
+  - Downloading things: downloading.md
+  - User interaction: user-interaction.md
+
+theme:
+  name: 'material'
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - content.code.annotate
+    - content.code.copy
+    - toc.integrate
+
+  palette:
+    - scheme: default
+      primary: 'black'
+      accent: 'grey'
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+  logo: 'images/logo-white.svg'
+
+  font:
+    text: Titillium Web
+    code: Roboto Mono
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - codehilite
+  - footnotes
+  - md_in_html
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+
+plugins:
+  - search
+
+extra_css:
+  - stylesheets/guidebook.css
