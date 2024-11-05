@@ -28,10 +28,10 @@ class ProgressReportImpl implements ProgressReport {
         this.expectedTotal = expectedTotal;
         this.completed = completed;
         this.units = units;
-        this.subReports = subReports.stream().map((it) -> {
-            if (it == null) return null;
-            return it.immutableReport();
-        }).toList();
+        this.subReports = new ArrayList<>(subReports.size());
+        for (@Nullable ProgressReport subReport : subReports) {
+            this.subReports.add(subReport != null ? subReport.immutableReport() : null);
+        }
     }
 
     @Nullable

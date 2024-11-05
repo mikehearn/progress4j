@@ -26,10 +26,10 @@ class MutableProgressReportImpl implements ProgressReport, MutableProgressReport
         this.expectedTotal = expectedTotal;
         this.completed = completed;
         this.units = units;
-        this.subReports = new ArrayList<>(subReports.stream().map((it) -> {
-            if (it == null) return null;
-            return it.mutableReport();
-        }).toList());
+        this.subReports = new ArrayList<>(subReports.size());
+        for (@Nullable ProgressReport subReport : subReports) {
+            this.subReports.add(subReport != null ? subReport.mutableReport() : null);
+        }
     }
 
     public MutableProgressReportImpl(@Nullable String message, long expectedTotal, long completed, @NotNull ProgressReport.Units units) {
@@ -136,11 +136,11 @@ class MutableProgressReportImpl implements ProgressReport, MutableProgressReport
 
     @Override
     public void setSubReports(@NotNull Collection<? extends @Nullable ProgressReport> subReports) {
+        this.subReports.ensureCapacity(subReports.size());
         this.subReports.clear();
-        this.subReports.addAll(subReports.stream().map(it -> {
-            if (it == null) return null;
-            return it.mutableReport();
-        }).toList());
+        for (@Nullable ProgressReport subReport : subReports) {
+            this.subReports.add(subReport != null ? subReport.mutableReport() : null);
+        }
     }
 
     @Override

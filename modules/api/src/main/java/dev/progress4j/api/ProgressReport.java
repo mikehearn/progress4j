@@ -95,7 +95,7 @@ import java.util.List;
  */
 public interface ProgressReport {
     /**
-     * Returns an immutable progress report.
+     * Returns an immutable progress report. The sub-reports list is copied.
      */
     static ProgressReport create(@Nullable String message, long expectedTotal, long completed, @NotNull ProgressReport.Units units, @NotNull Collection<? extends @Nullable ProgressReport> subReports) {
         return new ProgressReportImpl(message, expectedTotal, completed, units, subReports);
@@ -138,7 +138,7 @@ public interface ProgressReport {
         return create(null, 1L, 0L, Units.ABSTRACT_CONSISTENT, new ArrayList<>());
     }
 
-    /** A convenience constructor that takes ints instead of longs. */
+    /** A convenience constructor that takes ints instead of longs. The sub-reports list is copied. */
     static ProgressReport create(@Nullable String message, int expectedTotal, int completed, @NotNull ProgressReport.Units units, @NotNull List<@Nullable ProgressReport> subReports) {
         return create(message, (long)expectedTotal, (long)completed, units, subReports);
     }

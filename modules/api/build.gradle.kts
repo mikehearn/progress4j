@@ -15,7 +15,7 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(11))
     }
     withJavadocJar()
     withSourcesJar()
@@ -28,6 +28,6 @@ dependencies {
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
-    targetCompatibility = "17"
-    sourceCompatibility = "17"
+    targetCompatibility = "11"
+    sourceCompatibility = "11"
 }
