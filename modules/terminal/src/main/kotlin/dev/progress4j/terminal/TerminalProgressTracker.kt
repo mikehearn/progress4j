@@ -7,21 +7,26 @@ import com.github.ajalt.mordant.table.ColumnWidth
 import com.github.ajalt.mordant.table.grid
 import com.github.ajalt.mordant.terminal.PrintRequest
 import com.github.ajalt.mordant.terminal.Terminal
-import com.github.ajalt.mordant.terminal.TerminalInfo
 import com.github.ajalt.mordant.terminal.TerminalInterface
-import com.github.ajalt.mordant.widgets.*
+import com.github.ajalt.mordant.widgets.EmptyWidget
+import com.github.ajalt.mordant.widgets.ProgressBar
+import com.github.ajalt.mordant.widgets.Spinner
+import com.github.ajalt.mordant.widgets.Text
+import com.github.ajalt.mordant.widgets.progress.*
 import dev.progress4j.api.ProgressReport
 import dev.progress4j.utils.ProgressPacer
 import dev.progress4j.utils.ProgressStatsAccumulator
 import dev.progress4j.utils.ProgressTrackerInvoker
 import dev.progress4j.utils.ProgressTrackerResetter
 import java.io.PrintStream
-import java.time.Duration
 import kotlin.concurrent.thread
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 import kotlin.math.min
+import kotlin.time.ExperimentalTime
+import kotlin.time.TimeSource
+import kotlin.time.toJavaDuration
 
 /**
  * A fancy unicode+colors based terminal progress tracker that handles hierarchical progress reports.
@@ -59,12 +64,13 @@ import kotlin.math.min
  *
  * @param terminal A Mordant Terminal object that will be used to render the bars.
  */
+@OptIn(ExperimentalTime::class)
 class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, AutoCloseable {
-    private val startTime = System.nanoTime()
+    private val startTime = TimeSource.Monotonic.markNow()
     private val shutdownHook = thread(name = "Terminal progress tracker shutdown hook", start = false) {
         close(dueToJVMShutdown = true)
     }
-    private val elapsedDuration get() = Duration.ofNanos(System.nanoTime() - startTime)
+    private val elapsedDuration get() = startTime.elapsedNow().toJavaDuration()
 
     private val elapsedHumanized: String
         get() {
@@ -110,7 +116,7 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
         Runtime.getRuntime().addShutdownHook(shutdownHook)
     }
 
-    private inner class TrackerAnimation : Animation<Unit>(false, terminal) {
+    private inner class TrackerAnimation : Animation<Unit>(terminal) {
         private val spinner = Spinner.Dots(TextColors.green)
         private var currentPrimaryProgress = -1L
         private var frame = 0L
@@ -197,7 +203,7 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
                             cell(label)
                         else
                             cell(
-                                progressLayout {
+                                progressBarLayout {
                                     text(label)
                                     progressBar(
                                         finishedStyle = Theme.Default.styles["progressbar.complete"],
@@ -213,9 +219,10 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
                                     // if (report.units == Progress.Units.BYTES)
                                     //    timeRemaining(style = TextStyles.dim.style)
                                 }.build(
-                                    report.completed,
                                     report.expectedTotal,
-                                    elapsedDuration.toMillis() / 1000.0,
+                                    report.completed,
+                                    TimeSource.Monotonic.markNow(),
+                                    ProgressState.Status.Running(startTime),
                                     accumulator.averageProgress
                                 )
                             )
@@ -348,10 +355,8 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
                 return globalTracker!!
 
             // Set up Mordant. We need to customize the interface to break the loop that would otherwise occur when we override stdout.
-            // And we need to create Terminal twice, because TerminalDetection is internal.
-            val tmp = Terminal()
-            val redirectInterface = RedirectingTerminalInterface(System.out, System.err, tmp.info)
-            val terminal = Terminal(terminalInterface = redirectInterface)
+            // And we need to create Terminal twice, because STANDARD_TERMINAL_INTERFACE is internal.
+            val terminal = Terminal(terminalInterface = RedirectingTerminalInterface(System.out, System.err, Terminal().terminalInterface))
 
             // Ensure printing to stdout still works and pushes the messages _above_ the animation.
             System.setOut(PrintStreamWrapper(terminal, System.out))
@@ -450,8 +455,8 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
     private class RedirectingTerminalInterface(
         private val stdOut: PrintStream,
         private val stdErr: PrintStream,
-        override val info: TerminalInfo
-    ) : TerminalInterface {
+        private val delegate: TerminalInterface
+    ) : TerminalInterface by delegate {
         override fun completePrintRequest(request: PrintRequest) {
             val target = if (request.stderr) stdErr else stdOut
             if (request.trailingLinebreak) {
@@ -480,7 +485,6 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
             return readlnOrNull()
         }
     }
-
 
     // Copied from utils package
     /**
