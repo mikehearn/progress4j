@@ -1,15 +1,9 @@
-site_name: hshell
-site_url: https://hshell.conveyor.dev
+site_name: progress4j
+site_url: https://www.progress4j.org
 
 nav:
   - Introduction: index.md
-  - IntelliJ plugin: intellij.md
-  - Shell: shell.md
-  - Remote shells: ssh.md
-  - Executing programs: executing-programs.md
-  - Defining a CLI: cli.md
-  - Downloading things: downloading.md
-  - User interaction: user-interaction.md
+  - Quickstart: quickstart.md
 
 theme:
   name: 'material'
@@ -34,8 +28,6 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-
-  logo: 'images/logo-white.svg'
 
   font:
     text: Titillium Web
@@ -77,6 +69,3 @@ markdown_extensions:
 
 plugins:
   - search
-
-extra_css:
-  - stylesheets/guidebook.css
