@@ -63,7 +63,7 @@ import java.util.List;
  * implementation of this interface may return new values from its properties. If you need to keep a copy of a report, use {@link
  * #immutableReport()}. Alternatively if you want to get a copy that you can then start editing in place, use {@link #mutableReport()}.
  * Mutable reports are useful for when you might need to report progress very frequently and don't wish to create excess garbage. In that
- * situation it's up to the tracker to thin out reports to the frequency they need, and there are utilities in the {@link
+ * situation it's up to the tracker to thin out reports to the frequency they need, and there are utilities in the {@code
  * dev.progress4j.utils} package to do this for you.
  *
  * <h2>Hierarchical progress</h2>
@@ -214,7 +214,7 @@ public interface ProgressReport {
 
     /**
      * Returns true when this operation is complete.
-     * The default implementation returns true when {@link #getCompleted()} >= {@link #getExpectedTotal()}.
+     * The default implementation returns true when {@link #getCompleted()} &gt;= {@link #getExpectedTotal()}.
      */
     default boolean getComplete() {
         return getCompleted() >= getExpectedTotal();

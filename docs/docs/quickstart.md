@@ -1,5 +1,12 @@
 # Quickstart
 
+## Documentation
+
+Before diving in, you can explore the API in two ways:
+
+- [Javadoc for Java users](javadoc/index.html) - Core API documentation with traditional Java interface documentation
+- [KDoc for Kotlin users](dokka/index.html) - Full project documentation including Kotlin code and utilities
+
 ## Add dependencies
 
 A minimal usage requires the core API:

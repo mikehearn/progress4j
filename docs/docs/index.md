@@ -1,5 +1,7 @@
 # Introduction
 
+## Overview
+
 Progress4J aims to be for progress reporting what SLF4J is to logging. The goal is to establish a common protocol for the reporting
 of progress across all JVM apps, such that libraries can easily emit progress reports in a way that's decoupled from rendering.
 

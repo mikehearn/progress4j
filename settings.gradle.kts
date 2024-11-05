@@ -4,6 +4,11 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
     }
+
+    val dokkaVersion: String by settings
+    plugins {
+        id("org.jetbrains.dokka") version dokkaVersion
+    }
 }
 
 rootProject.name = "progress4j"

@@ -1,5 +1,5 @@
+
 import org.jetbrains.dokka.DokkaConfiguration
-import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
 
 plugins {
@@ -7,7 +7,7 @@ plugins {
     kotlin("jvm") version "1.9.20"
 
     // Dokka for documentation site generation.
-    id("org.jetbrains.dokka") version "1.9.10"
+    id("org.jetbrains.dokka") version "1.9.20"
 }
 
 group = "dev.progress4j"
@@ -22,8 +22,30 @@ repositories {
     mavenCentral()
 }
 
-tasks.withType<DokkaMultiModuleTask>().configureEach {
-    includes.from("module.md")
+tasks.dokkaHtmlMultiModule {
+    moduleName.set("progress4j")
+}
+
+// Generate Javadoc for API module
+project(":progress4j-api") {
+    tasks.register<Javadoc>("generateApiJavadoc") {
+        source = sourceSets["main"].allJava
+        classpath = sourceSets["main"].compileClasspath
+        setDestinationDir(file("${rootProject.projectDir}/docs/docs/javadoc"))
+    }
+}
+
+// Task to copy Dokka output to docs directory
+tasks.register<Copy>("copyDokkaToDocs") {
+    dependsOn("dokkaHtmlMultiModule")
+    from("build/dokka/htmlMultiModule")
+    into("docs/docs/dokka")
+}
+
+// Task to prepare all documentation
+tasks.register("prepareAllDocs") {
+    dependsOn(":progress4j-api:generateApiJavadoc")
+    dependsOn("copyDokkaToDocs")
 }
 
 subprojects {
@@ -34,6 +56,8 @@ subprojects {
     tasks.withType<DokkaTaskPartial>().configureEach {
         dokkaSourceSets {
             configureEach {
+                includes.from("module.md")
+
                 // Suppress a package
                 perPackageOption {
                     matchingRegex.set(""".*\.impl.*""")

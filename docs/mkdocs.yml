@@ -4,6 +4,9 @@ site_url: https://www.progress4j.org
 nav:
   - Introduction: index.md
   - Quickstart: quickstart.md
+  - API Documentation:
+    - Javadoc (API Module): javadoc/index.html
+    - Dokka (Full): dokka/index.html
 
 theme:
   name: 'material'
