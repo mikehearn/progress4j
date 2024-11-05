@@ -8,14 +8,25 @@ import java.io.Writer
 /**
  * A [ProgressReport.Tracker] that writes JSON lines encoding the progress report to the given [Writer].
  *
- * The schema of the emitted JSON is:
- *
- * `{ "type": "progress", "expectedTotal": 100, "completed": 1, "message": "str", "progressUnits": "BYTES", "operation": "123abc" }`
- *
- * - `message`: Optional.
- * - `units`: Optional. If missing units are [ProgressReport.Units.ABSTRACT_CONSISTENT].
- * - `operation`: Optional. If missing there is no associated operation object, if present, it's an arbitrary hex encoded number identifying
- *   the operation object. The operation itself is not serialized in any way.
+ * The schema of the emitted JSON follows this structure:
+ * ```json
+ * {
+ *   "type": "progress",           // Always "progress"
+ *   "expectedTotal": 100,         // Required, >= 1
+ *   "completed": 1,              // Required, >= 0
+ *   "message": "Processing...",   // Optional string
+ *   "units": "BYTES",            // Optional, one of the Units enum values
+ *   "subReports": [              // Optional array of nested progress reports
+ *     {
+ *       "type": "progress",
+ *       ...
+ *     }
+ *   ]
+ * }
+ * ```
+ * 
+ * See `progress-schema.json` in the docs for the full JSON Schema definition.
+ * 
  */
 class ProgressJSONWriter(private val output: Writer) : ProgressReport.Tracker {
     // Re-use the same builder over and over to improve performance.

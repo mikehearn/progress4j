@@ -12,6 +12,7 @@ extra:
 nav:
   - Introduction: index.md
   - Quickstart: quickstart.md
+  - JSON Format: json.md
   - API Documentation:
     - Javadoc (API Module): javadoc/index.html
     - Dokka (Full): dokka/index.html
@@ -68,6 +69,7 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
