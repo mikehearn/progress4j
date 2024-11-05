@@ -1,6 +1,14 @@
 site_name: progress4j
 site_url: https://www.progress4j.org
 
+repo_url: https://github.com/mikehearn/progress4j
+repo_name: mikehearn/progress4j
+
+# Current version from git tag
+extra:
+  version:
+    provider: mike
+
 nav:
   - Introduction: index.md
   - Quickstart: quickstart.md
