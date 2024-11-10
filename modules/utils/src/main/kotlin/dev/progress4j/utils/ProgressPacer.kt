@@ -106,7 +106,7 @@ class ProgressPacer(
                 return
             closed = true
             if (guaranteedForwarding.size > 0)
-                logger.log(System.Logger.Level.TRACE) { "Closing with ${guaranteedForwarding.size} reports in queue" }
+                logger.log(System.Logger.Level.TRACE, "Closing with ${guaranteedForwarding.size} reports in queue")
             cond.signal()
         }
         if (Thread.currentThread() != pacerThread)
@@ -115,6 +115,7 @@ class ProgressPacer(
 
     internal companion object {
         private val logger by lazy { System.getLogger(ProgressPacer::class.java.name) }
+
         /**
          * Returns true if the other progress object differs only in the amount of work done, or if completion status has changed,
          * recursively.
