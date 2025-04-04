@@ -6,20 +6,25 @@ import java.util.concurrent.atomic.AtomicReference
 
 /**
  * Plain but coloured text rendering for parallel tasks, suitable for redirection to a log file.
- * Formats progress in a hierarchical structure with clear task relationships.
+ * Formats progress in a hierarchical structure with clear task relationships and columnar alignment.
  * 
  * Sample output format:
  * ```
- * [  0.05s] Processing files
- * [  0.10s]   • Download → Fetching package.json
- * [  1.25s]   ✓ Download → Fetching package.json
- * [  1.26s]   • Build → Compiling sources
- * [  2.30s]   ✓ Build → Compiling sources
- * [  2.35s] Processing files (Done)
+ * [  0.05s]  Processing files                                         
+ * [  0.10s]   • Download            → Fetching package.json           
+ * [  1.25s]   ✓ Download            → Fetching package.json           100.0%
+ * [  1.26s]   • Build               → Compiling sources               
+ * [  1.85s]   • Build               → Compiling sources               50.0%
+ * [  2.30s]   ✓ Build               → Compiling sources               100.0%
+ * [  2.35s]  Processing files (Done)                                  100.0%
  * ```
  * 
- * When rendered in a terminal that supports color, progress information is colorized
- * for improved readability.
+ * Features:
+ * - Columnar layout for better visual alignment
+ * - Show intermediate progress for long-running tasks
+ * - Color-coded output in terminals that support it
+ * - Clear visual hierarchy between main tasks and subtasks
+ * - Minimal noise with sensible update thresholds
  */
 class PlainTaskTracker(private val output: PrintStream = System.out) : ProgressReport.Tracker {
     private val startTime = System.currentTimeMillis()
@@ -45,8 +50,6 @@ class PlainTaskTracker(private val output: PrintStream = System.out) : ProgressR
 
     // Detect if terminal supports color
     private fun detectColorSupport(): Boolean {
-        if (System.console() == null) return false
-
         val colorTerm = System.getenv("COLORTERM")
         val term = System.getenv("TERM")
         val ciMode = System.getenv("CI") != null
@@ -76,6 +79,13 @@ class PlainTaskTracker(private val output: PrintStream = System.out) : ProgressR
     // Track significant progress made since last report
     private val lastReportedProgress = mutableMapOf<Int, Float>()
 
+    // Column widths for better alignment
+    private val TIMESTAMP_WIDTH = 10  // [  0.05s]
+    private val INDENT_WIDTH = 3      // "   "
+    private val STATUS_WIDTH = 2      // "• " or "✓ "
+    private val GROUP_MIN_WIDTH = 15  // Minimum width for task group name
+    private val ARROW_WIDTH = 3       // " → "
+    
     override fun report(progress: ProgressReport) {
         val last = lastProgress.getAndSet(progress.immutableReport())
         if (last == progress) return
@@ -103,19 +113,10 @@ class PlainTaskTracker(private val output: PrintStream = System.out) : ProgressR
                     lastReportedProgress[-1] = progressPercent
                     lastProgressUpdateTime[-1] = currentTime
                     
-                    val mainMessage = main.message ?: "Working"
-                    val mainInfo = bold(colorize(mainMessage, ANSI_CYAN))
-                    val percentIndicator = formatProgressIndicator(main)
-                    
-                    output.println("$timestamp $mainInfo $percentIndicator")
+                    printMainTaskLine(timestamp, main, false)
                 }
             } else if (shouldPrintMain) {
-                val mainMessage = main.message ?: "Working"
-                val suffix = if (main.complete) colorize(" (Done)", ANSI_GREEN) else ""
-                val mainInfo = bold(colorize(mainMessage, ANSI_CYAN))
-                val percentIndicator = formatProgressIndicator(main)
-                
-                output.println("$timestamp $mainInfo$suffix $percentIndicator")
+                printMainTaskLine(timestamp, main, main.complete)
                 
                 // Reset tracking for main task
                 if (main.complete) {
@@ -159,29 +160,13 @@ class PlainTaskTracker(private val output: PrintStream = System.out) : ProgressR
                     // Update task history
                     taskHistory[index] = groupName
                     
-                    // Format with indentation to show hierarchy
-                    val isComplete = subtask.complete
-                    val prefix = if (isComplete) colorize("✓", ANSI_BRIGHT_GREEN) else colorize("•", ANSI_BLUE)
-                    val groupColor = if (isComplete) ANSI_GREEN else ANSI_CYAN
-                    val arrow = colorize("→", ANSI_GRAY)
-                    val formattedGroup = colorize(groupName, groupColor)
-                    val percentIndicator = formatProgressIndicator(subtask)
-                    
-                    output.println("$timestamp   $prefix $formattedGroup $arrow $taskInfo $percentIndicator")
+                    printSubtaskLine(timestamp, subtask, groupName, taskInfo, subtask.complete)
                 }
             } else if (shouldPrintTask) {
                 // Update task history
                 taskHistory[index] = groupName
                 
-                // Format with indentation to show hierarchy
-                val isComplete = subtask.complete
-                val prefix = if (isComplete) colorize("✓", ANSI_BRIGHT_GREEN) else colorize("•", ANSI_BLUE)
-                val groupColor = if (isComplete) ANSI_GREEN else ANSI_CYAN
-                val arrow = colorize("→", ANSI_GRAY)
-                val formattedGroup = colorize(groupName, groupColor)
-                val percentIndicator = formatProgressIndicator(subtask)
-                
-                output.println("$timestamp   $prefix $formattedGroup $arrow $taskInfo $percentIndicator")
+                printSubtaskLine(timestamp, subtask, groupName, taskInfo, subtask.complete)
                 
                 // Reset tracking for this task
                 if (subtask.complete) {
@@ -193,6 +178,44 @@ class PlainTaskTracker(private val output: PrintStream = System.out) : ProgressR
                 }
             }
         }
+    }
+    
+    private fun printMainTaskLine(timestamp: String, report: ProgressReport, isComplete: Boolean) {
+        val mainMessage = report.message ?: "Working"
+        val suffix = if (isComplete) colorize(" (Done)", ANSI_GREEN) else ""
+        val mainInfo = bold(colorize(mainMessage, ANSI_CYAN))
+        val percentIndicator = formatProgressIndicator(report)
+        
+        output.println("$timestamp  $mainInfo$suffix${" ".repeat(4)}$percentIndicator")
+    }
+    
+    private fun printSubtaskLine(
+        timestamp: String, 
+        report: ProgressReport,
+        groupName: String,
+        taskInfo: String,
+        isComplete: Boolean
+    ) {
+        val paddedIndent = " ".repeat(INDENT_WIDTH)
+        
+        // Format status indicator
+        val statusIcon = if (isComplete) colorize("✓", ANSI_BRIGHT_GREEN) else colorize("•", ANSI_BLUE)
+        val paddedStatus = statusIcon + " "
+        
+        // Format group name with consistent width
+        val groupColor = if (isComplete) ANSI_GREEN else ANSI_CYAN
+        val formattedGroup = colorize(groupName.padEnd(GROUP_MIN_WIDTH), groupColor)
+        
+        // Format connecting arrow
+        val arrow = colorize("→", ANSI_GRAY)
+        
+        // Format percentage/progress indicator
+        val percentIndicator = formatProgressIndicator(report)
+        
+        // Build the full line with consistent spacing
+        output.println(
+            "$timestamp$paddedIndent$paddedStatus$formattedGroup $arrow $taskInfo${" ".repeat(4)}$percentIndicator"
+        )
     }
     
     private fun formatProgressIndicator(report: ProgressReport): String {
