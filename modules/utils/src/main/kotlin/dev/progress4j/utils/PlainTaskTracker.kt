@@ -25,12 +25,18 @@ import java.util.concurrent.atomic.AtomicReference
  * - Color-coded output in terminals that support it
  * - Clear visual hierarchy between main tasks and subtasks
  * - Minimal noise with sensible update thresholds
+ * 
+ * @param output The print stream to write output to
+ * @param useColors Whether to use ANSI colors in the output. If null, auto-detect color support
  */
-class PlainTaskTracker(private val output: PrintStream = System.out) : ProgressReport.Tracker {
+class PlainTaskTracker(
+    private val output: PrintStream = System.out,
+    useColors: Boolean? = null
+) : ProgressReport.Tracker {
     private val startTime = System.currentTimeMillis()
     private val lastProgress = AtomicReference<ProgressReport?>()
     private val taskHistory = mutableMapOf<Int, String>() // Track task messages by index
-    private val hasColorSupport = detectColorSupport()
+    private val hasColorSupport = useColors ?: detectColorSupport()
 
     companion object {
         // ANSI color constants for basic formatting
