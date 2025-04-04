@@ -16,7 +16,7 @@ import kotlin.math.max
  * full height bar symbol otherwise.
  */
 class ProgressPrinter @JvmOverloads constructor(
-    private val output: PrintStream = System.out,
+    val output: PrintStream = System.out,
     private val verticalBar: String = if (System.getProperty("os.name").startsWith("Windows")) "|" else "│"
 ) : ProgressReport.Tracker {
     private var startTime: Instant? = null
