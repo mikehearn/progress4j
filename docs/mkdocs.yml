@@ -47,11 +47,11 @@ theme:
 
 markdown_extensions:
   - admonition
-  - attr_list
   - codehilite
-  - footnotes
-  - md_in_html
   - meta
+  - footnotes
+  - attr_list
+  - md_in_html
   - toc:
       permalink: true
   - pymdownx.arithmatex
@@ -63,22 +63,18 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.highlight:
-      linenums: true
+  - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tilde
+  - tables
 
 plugins:
   - search
