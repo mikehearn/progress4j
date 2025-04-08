@@ -1,0 +1,988 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://www.progress4j.org/">
+      
+      
+      
+        <link rel="next" href="quickstart/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>progress4j</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Titillium Web";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="progress4j" class="md-header__button md-logo" aria-label="progress4j" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            progress4j
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mikehearn/progress4j" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mikehearn/progress4j
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="progress4j" class="md-nav__button md-logo" aria-label="progress4j" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    progress4j
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mikehearn/progress4j" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mikehearn/progress4j
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      api
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utils" class="md-nav__link">
+    <span class="md-ellipsis">
+      utils
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      terminal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progress-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress Reports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indeterminate-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indeterminate Progress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trackers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trackers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchical-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hierarchical Progress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progress-report-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress Report Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread Safety
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JSON Format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="javadoc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Javadoc (API Module)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dokka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dokka (Full)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Progress4J aims to be for progress reporting what SLF4J is to logging. The goal is to establish a common protocol for the reporting
+of progress across all JVM apps, such that libraries can easily emit progress reports in a way that's decoupled from rendering.</p>
+<p>It consists of a tiny core module with no dependencies defining a schema for progress events, meaning it can be incorporated into
+essentially any library or tool that runs on the JVM. Progress reports can be generated without imposing any policy on what is done with
+them. Then there are extra modules that transform, transport or render streams of progress events. Libraries can just depend on the core
+module, or also the utility module if they want to, and applications can use the renderer modules.</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<p>Progress4J is structured into several modules:</p>
+<h3 id="api"><code>api</code><a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<p>The core API defines <code>ProgressReport</code> and <code>MutableProgressReport</code>. It depends only on Java 11. The types have these features:</p>
+<ul>
+<li>Reports contain counts of the <code>completed</code> and <code>expectedTotal</code> work units. Completed=0, expectedTotal=1 is a special case defined to mean "indeterminate progress" as commonly shown with spinning wheels or bouncing bar.</li>
+<li>They can have messages that describe the operation in progress.</li>
+<li>Can be arranged hierarchically, allowing the progress of complex multi-level operations to be reported. That doesn't imply progress renderers will always show all that detail - progress reporting is typically meant for humans after all - but it can at least be reported.</li>
+<li>Can specify the units of work: abstract consistent (meaningful to calculate an estimated time of completion), abstract inconsistent (work units have unpredictable duration) and bytes. These map well to commonly desired renderings.</li>
+<li>Can be serialized to JSON (see below).</li>
+<li>Reports can be both mutable and immutable. This enables garbage-free reporting of progress for environments where that's important.</li>
+</ul>
+<p>The <code>ProgressReport.Trackable</code> interface advertises that your object can produce progress reports, and <code>ProgressReport.Tracker</code> receives
+them. This is simpler than <code>java.util.concurrent.Flow</code> or reactive streams as it's rarely necessary to have more than one receiver of
+a progress report from an object, and it's easy to fan out if needed (e.g. to both log and draw reports).</p>
+<p><code>api</code> has a JPMS module descriptor.</p>
+<h3 id="utils"><code>utils</code><a class="headerlink" href="#utils" title="Permanent link">&para;</a></h3>
+<p>Provides the following features:</p>
+<ol>
+<li>Utilities to generate streams of progress events as you iterate over a collection or <code>Stream&lt;T&gt;</code>, read an <code>InputStream</code>, read through a
+   file, and more.</li>
+<li>Utilities to do common progress related tasks like combine streams of reports from parallel sub-operations, accumulate statistics, relay
+   reports between threads and impose pacing so other progress tracking objects aren't flooded.</li>
+<li>Lightweight serialization of events to JSON. No JSON library is required as a dependency, making this a simple way to report progress
+   in command line tools, or to web browsers (deserialization does still require a JSON library).</li>
+<li>A renderer that just prints to stdout.</li>
+</ol>
+<p><code>utils</code> has a JPMS module descriptor and depends on the Kotlin standard library.</p>
+<h3 id="terminal"><code>terminal</code><a class="headerlink" href="#terminal" title="Permanent link">&para;</a></h3>
+<p>A terminal implementation that features attractive Unicode rendering with animated progress bars. It can report up to three hierarchical
+levels of detail in a way that looks good, and has been used in a commercial product for the last couple of years.</p>
+<p>Depends on the Kotlin standard library and <a href="https://www.github.com/ajalt/mordant">Mordant</a>, a terminal rendering library.</p>
+<h2 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h2>
+<h3 id="progress-reports">Progress Reports<a class="headerlink" href="#progress-reports" title="Permanent link">&para;</a></h3>
+<p>A progress report represents the state of an operation at a specific point in time. It includes:</p>
+<ul>
+<li><strong>Message</strong>: A human-readable description of what's happening</li>
+<li><strong>Completed</strong>: How many work units have been completed so far</li>
+<li><strong>ExpectedTotal</strong>: How many work units are expected in total</li>
+<li><strong>Units</strong>: What kind of units we're talking about (abstract consistent, abstract inconsistent, or bytes)</li>
+<li><strong>SubReports</strong>: Optional hierarchical progress information for sub-operations</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Java</label><label for="__tabbed_1_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a measurable progress report</span>
+<span class="n">ProgressReport</span><span class="w"> </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Downloading files&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">);</span>
+
+<span class="c1">// You can check properties</span>
+<span class="kt">long</span><span class="w"> </span><span class="n">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">getCompleted</span><span class="p">();</span><span class="w">        </span><span class="c1">// 25</span>
+<span class="kt">long</span><span class="w"> </span><span class="n">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">getExpectedTotal</span><span class="p">();</span><span class="w">     </span><span class="c1">// 100</span>
+<span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">getMessage</span><span class="p">();</span><span class="w">          </span><span class="c1">// &quot;Downloading files&quot;</span>
+<span class="kt">boolean</span><span class="w"> </span><span class="n">isComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">getComplete</span><span class="p">();</span><span class="w">     </span><span class="c1">// false (25 &lt; 100)</span>
+<span class="n">ProgressReport</span><span class="p">.</span><span class="na">Units</span><span class="w"> </span><span class="n">units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">getUnits</span><span class="p">();</span><span class="w"> </span><span class="c1">// ABSTRACT_CONSISTENT by default</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a measurable progress report</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Downloading files&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">)</span>
+
+<span class="c1">// You can check properties</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">completed</span><span class="w">        </span><span class="c1">// 25</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">expectedTotal</span><span class="w">     </span><span class="c1">// 100</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">message</span><span class="w">            </span><span class="c1">// &quot;Downloading files&quot;</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">isComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">complete</span><span class="w">        </span><span class="c1">// false (25 &lt; 100)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="na">units</span><span class="w">                </span><span class="c1">// ABSTRACT_CONSISTENT by default</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="indeterminate-progress">Indeterminate Progress<a class="headerlink" href="#indeterminate-progress" title="Permanent link">&para;</a></h3>
+<p>When you don't know how much work remains, you can use an "indeterminate" progress report:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Java</label><label for="__tabbed_2_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ProgressReport</span><span class="w"> </span><span class="n">indeterminate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">createIndeterminate</span><span class="p">(</span><span class="s">&quot;Working...&quot;</span><span class="p">);</span>
+<span class="kt">boolean</span><span class="w"> </span><span class="n">isIndeterminate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">indeterminate</span><span class="p">.</span><span class="na">getIndeterminate</span><span class="p">();</span><span class="w"> </span><span class="c1">// true</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">indeterminate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">createIndeterminate</span><span class="p">(</span><span class="s">&quot;Working...&quot;</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">isIndeterminate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">indeterminate</span><span class="p">.</span><span class="na">indeterminate</span><span class="w"> </span><span class="c1">// true</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This is represented as a report with <code>completed = 0</code> and <code>expectedTotal = 1</code>, signaling to renderers that they should show an indeterminate spinner or animation.</p>
+<h3 id="trackers">Trackers<a class="headerlink" href="#trackers" title="Permanent link">&para;</a></h3>
+<p>A <code>ProgressReport.Tracker</code> is the consumer of progress reports. It receives reports and does something with them - typically rendering to a UI. The interface is intentionally simple:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Java</label><label for="__tabbed_3_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">tracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="nd">@NotNull</span><span class="w"> </span><span class="n">ProgressReport</span><span class="w"> </span><span class="n">progress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Do something with the progress report</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;%s: %.1f%%\n&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">progress</span><span class="p">.</span><span class="na">getMessage</span><span class="p">(),</span>
+<span class="w">            </span><span class="p">(</span><span class="mf">100.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">progress</span><span class="p">.</span><span class="na">getCompleted</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">progress</span><span class="p">.</span><span class="na">getExpectedTotal</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Or with a lambda</span>
+<span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">lambdaTracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Handle the progress report</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">tracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">object</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="n">progress</span><span class="p">:</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Do something with the progress report</span>
+<span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">${</span><span class="n">progress</span><span class="p">.</span><span class="na">message</span><span class="si">}</span><span class="s">: </span><span class="si">${</span><span class="p">(</span><span class="m">100.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">progress</span><span class="p">.</span><span class="na">completed</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">progress</span><span class="p">.</span><span class="na">expectedTotal</span><span class="si">}</span><span class="s">%&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Or with a lambda</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">lambdaTracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="c1">// Handle the progress report</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="hierarchical-progress">Hierarchical Progress<a class="headerlink" href="#hierarchical-progress" title="Permanent link">&para;</a></h3>
+<p>For complex operations with multiple steps or parallel tasks, you can nest progress reports using subReports:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Java</label><label for="__tabbed_4_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a top-level report for an operation with 3 steps</span>
+<span class="n">ProgressReport</span><span class="w"> </span><span class="n">mainTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Main task&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Create a report for the current subtask (step 1 of 3)</span>
+<span class="n">ProgressReport</span><span class="w"> </span><span class="n">subTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Sub task 1/3&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span>
+
+<span class="c1">// Add the subtask to the main task</span>
+<span class="n">mainTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mainTask</span><span class="p">.</span><span class="na">withSubReport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">subTask</span><span class="p">);</span>
+
+<span class="c1">// Send the combined report</span>
+<span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">mainTask</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a top-level report for an operation with 3 steps</span>
+<span class="kd">var</span><span class="w"> </span><span class="nv">mainTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Main task&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1">// Create a report for the current subtask (step 1 of 3)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">subTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Sub task 1/3&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">)</span>
+
+<span class="c1">// Add the subtask to the main task</span>
+<span class="n">mainTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mainTask</span><span class="p">.</span><span class="na">withSubReport</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">subTask</span><span class="p">)</span>
+
+<span class="c1">// Send the combined report</span>
+<span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">mainTask</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This allows rich, detailed progress reporting for complex operations.</p>
+<h3 id="common-patterns">Common Patterns<a class="headerlink" href="#common-patterns" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Collection Processing</strong>: Use <code>withProgress</code> to automatically track iteration through collections</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Java</label><label for="__tabbed_5_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Track progress while iterating through a list</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">withProgress</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing items&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Process each item</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Track progress while iterating through a list</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">withProgress</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing items&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Process each item</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Stream Processing</strong>: Use input stream wrappers to track bytes read</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Java</label><label for="__tabbed_6_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputStreamWithProgress</span><span class="p">(</span><span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;large-file.dat&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Reading file&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Read from the stream, progress is automatically reported</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;large-file.dat&quot;</span><span class="p">).</span><span class="na">inputStreamWithProgress</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Reading file&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="c1">// Read from the stream, progress is automatically reported</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Parallel Tasks</strong>: Track completable futures using <code>withProgressTrackedFutures</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Java</label><label for="__tabbed_7_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">CompletableFuture</span><span class="o">&lt;</span><span class="n">Result</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">futures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">task</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">CompletableFuture</span><span class="p">.</span><span class="na">supplyAsync</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">processTask</span><span class="p">(</span><span class="n">task</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+
+<span class="n">futures</span><span class="p">.</span><span class="na">withProgressTrackedFutures</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing tasks in parallel&quot;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">CompletableFuture</span><span class="p">::</span><span class="n">join</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">futures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">CompletableFuture</span><span class="p">.</span><span class="na">supplyAsync</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">processTask</span><span class="p">(</span><span class="n">task</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">futures</span><span class="p">.</span><span class="na">withProgressTrackedFutures</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing tasks in parallel&quot;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">join</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p><strong>High-Frequency Updates</strong>: Use <code>ProgressPacer</code> to avoid UI flooding</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Java</label><label for="__tabbed_8_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ProgressPacer</span><span class="w"> </span><span class="n">pacer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProgressPacer</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="mf">30.0f</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max 30 updates per second</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1_000_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// This would generate too many updates without pacing</span>
+<span class="w">    </span><span class="n">pacer</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Processing&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1_000_000</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">pacer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressPacer</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="m">30.0f</span><span class="p">)</span><span class="w"> </span><span class="c1">// Max 30 updates per second</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="m">1</span><span class="n">_000_000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// This would generate too many updates without pacing</span>
+<span class="w">    </span><span class="n">pacer</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Processing&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="n">_000_000</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="progress-report-messages">Progress Report Messages<a class="headerlink" href="#progress-report-messages" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Be concise and descriptive</li>
+<li>Avoid including "Processing" or "Working on" - these are implied</li>
+<li>Don't include the progress percent or count - the tracker will handle that</li>
+<li>Don't change messages too frequently - it makes them hard to read</li>
+<li>Use hierarchical reports for detailed step-by-step information</li>
+</ul>
+<h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>For frequently updating progress, use <code>ProgressPacer</code> to limit update frequency</li>
+<li>Consider using <code>MutableProgressReport</code> for high-performance scenarios to reduce object creation</li>
+<li>The <code>ProgressReport.Tracker</code> interface is designed to be fast, but implementations may have overhead</li>
+</ul>
+<h3 id="thread-safety">Thread Safety<a class="headerlink" href="#thread-safety" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Progress reports are immutable by default, making them thread-safe</li>
+<li>Trackers should be prepared to receive reports from multiple threads</li>
+<li>Use <code>ProgressStreamCombiner</code> when combining progress from parallel operations</li>
+</ul>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Check out the <a href="quickstart/">Quickstart Guide</a> for examples and basic usage</li>
+<li>Explore the <a href="json/">JSON Schema</a> for serializing progress reports</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "content.code.annotate", "content.code.copy", "toc.integrate"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ThreeLevelProgressEmitter</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            progress4j
+                    </a>            </div>
+            <div class="library-version">0.1
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":progress4j-utils:dokkaHtmlPartial/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="progress4j-utils::dev.progress4j.utils/ThreeLevelProgressEmitter///PointingToDeclaration//1318301537">
+  <div class="breadcrumbs"><a href="../../index.html">progress4j-utils</a><span class="delimiter">/</span><a href="../index.html">dev.progress4j.utils</a><span class="delimiter">/</span><span class="current">ThreeLevelProgressEmitter</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Three</span><wbr><span>Level</span><wbr><span>Progress</span><wbr><span><span>Emitter</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ThreeLevelProgressEmitter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token punctuation">, </span></span><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTracks<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><p class="paragraph">Builds <a href="../../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a> objects that model an operation made up of several parallel sub-operations, each of which may itself have multiple steps. Such reports are often found in build systems that can execute multiple tasks in parallel, and where each task may need to do multiple sequential operations.</p><p class="paragraph">It produces progress reports that contain 3 levels: one main report, a number of tasks that are sub-reports of the main report, and a single sub-report for each task. This is meant for visually organizing a complex task with parallel tasks in a user-friendly manner: the main report represents the overall work to be done and each task is a separate workflow that contributes to that main work through a sequence of subtasks.</p><p class="paragraph">Each task is associated to a track, usually representing a fixed resource like a worker thread. This is so that all work for that task is reported in the specific sub-report of that track, keeping visual stability for the progress of that task. Once a task is done, the track goes into an idle state, which is represented by a null sub-report at the specific index for that track. Visually, this gives a clean representation of what each thread is doing at the moment. Also, the completed work for the main-report is incremented.</p><p class="paragraph">To use, simply create a <a href="index.html">ThreeLevelProgressEmitter</a> with the message for the main report, the expectedTotal set to the number of tasks you expect to need for completion of the work, and expectedTracks to the number of separate tracks (threads) where tasks will execute. Then, call <a href="start-task.html">startTask</a> for each work task selecting the track on which it will run and a message for that task, and report progress of that task to the <a href="-task/index.html">Task</a> object returned. Once done with that task, <a href="close.html">close</a> the <a href="-task/index.html">Task</a> object (or better yet, use <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/index.html">AutoCloseable.use</a>). Once done with the overall work, <a href="close.html">close</a> the <a href="index.html">ThreeLevelProgressEmitter</a> (or once again use <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/index.html">AutoCloseable.use</a>).</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="2005128630%2FConstructors%2F1318301537" anchor-label="ThreeLevelProgressEmitter" id="2005128630%2FConstructors%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-three-level-progress-emitter.html"><span>Three</span><wbr><span>Level</span><wbr><span>Progress</span><wbr><span><span>Emitter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2005128630%2FConstructors%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token punctuation">, </span></span><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTracks<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="211322825%2FClasslikes%2F1318301537" anchor-label="Task" id="211322825%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-task/index.html"><span><span>Task</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="211322825%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-task/index.html">Task</a> : <a href="../../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">A "track" in the multi-progress report.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-317896362%2FProperties%2F1318301537" anchor-label="completedTasks" id="-317896362%2FProperties%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="completed-tasks.html"><span>completed</span><wbr><span><span>Tasks</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-317896362%2FProperties%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="completed-tasks.html">completedTasks</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-2073591543%2FFunctions%2F1318301537" anchor-label="close" id="-2073591543%2FFunctions%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="close.html"><span><span>close</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2073591543%2FFunctions%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1808710746%2FFunctions%2F1318301537" anchor-label="startTask" id="-1808710746%2FFunctions%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="start-task.html"><span>start</span><wbr><span><span>Task</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1808710746%2FFunctions%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="start-task.html"><span class="token function">startTask</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-task/index.html">ThreeLevelProgressEmitter.Task</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

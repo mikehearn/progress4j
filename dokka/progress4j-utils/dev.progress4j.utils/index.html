@@ -1,0 +1,388 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>dev.progress4j.utils</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../index.html">
+                            progress4j
+                    </a>            </div>
+            <div class="library-version">0.1
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":progress4j-utils:dokkaHtmlPartial/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="progress4j-utils::dev.progress4j.utils////PointingToDeclaration//1318301537">
+  <div class="breadcrumbs"><a href="../index.html">progress4j-utils</a><span class="delimiter">/</span><span class="current">dev.progress4j.utils</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-2082744543%2FClasslikes%2F1318301537" anchor-label="CloseableIterator" id="-2082744543%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-closeable-iterator/index.html"><span>Closeable</span><wbr><span><span>Iterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2082744543%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-closeable-iterator/index.html">CloseableIterator</a><span class="token operator">&lt;</span><a href="-closeable-iterator/index.html">T</a><span class="token operator">&gt;</span> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><a href="-closeable-iterator/index.html">T</a><span class="token operator">&gt; </span>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">An iterator that also be closed before iteration is completed. CloseableIterators auto-close themselves when done.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-461107166%2FClasslikes%2F1318301537" anchor-label="IgnoreProgress" id="-461107166%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ignore-progress/index.html"><span>Ignore</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-461107166%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-ignore-progress/index.html">IgnoreProgress</a> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">A progress consumer that simply ignores all reports.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-46124104%2FClasslikes%2F1318301537" anchor-label="PlainTaskTracker" id="-46124104%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-plain-task-tracker/index.html"><span>Plain</span><wbr><span>Task</span><wbr><span><span>Tracker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-46124104%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-plain-task-tracker/index.html">PlainTaskTracker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">output<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/PrintStream.html">PrintStream</a><span class="token operator"> = </span>System.out<span class="token punctuation">, </span></span><span class="parameter ">useColors<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">Plain but coloured text rendering for parallel tasks, suitable for redirection to a log file. Formats progress in a hierarchical structure with clear task relationships and columnar alignment.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1594404960%2FClasslikes%2F1318301537" anchor-label="ProgressEmitter" id="-1594404960%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-emitter/index.html"><span>Progress</span><wbr><span><span>Emitter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1594404960%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-emitter/index.html">ProgressEmitter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a><span class="token punctuation">, </span></span><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">A thread safe accumulator of work done.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1555223778%2FClasslikes%2F1318301537" anchor-label="ProgressFixup" id="-1555223778%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-fixup/index.html"><span>Progress</span><wbr><span><span>Fixup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1555223778%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-fixup/index.html">ProgressFixup</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">Fixes or drops problematic progress reports e.g. where no actual work is expected.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-608081671%2FClasslikes%2F1318301537" anchor-label="ProgressJSONWriter" id="-608081671%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-j-s-o-n-writer/index.html"><span>Progress</span><wbr><span><span>JSONWriter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-608081671%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-j-s-o-n-writer/index.html">ProgressJSONWriter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">output<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Writer.html">Writer</a></span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">A <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a> that writes JSON lines encoding the progress report to the given <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Writer.html">Writer</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-521040412%2FClasslikes%2F1318301537" anchor-label="ProgressLogger" id="-521040412%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-logger/index.html"><span>Progress</span><wbr><span><span>Logger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-521040412%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-logger/index.html">ProgressLogger</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">level<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/System.Logger.Level.html">System.Logger.Level</a><span class="token operator"> = </span>Level.DEBUG</span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">A progress callback that logs the start and end of the operation. Not reusable.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="218675887%2FClasslikes%2F1318301537" anchor-label="ProgressPacer" id="218675887%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-pacer/index.html"><span>Progress</span><wbr><span><span>Pacer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="218675887%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-pacer/index.html">ProgressPacer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token punctuation">, </span></span><span class="parameter ">hz<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">30.0f</span><span class="token punctuation">, </span></span><span class="parameter ">alwaysTick<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">Receives progress reports on any arbitrary thread, and forwards them on a separate single thread at the given rate. This is useful for disconnecting the speed of progress report delivery from the frequency at which they're printed or rendered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-340353932%2FClasslikes%2F1318301537" anchor-label="ProgressPrinter" id="-340353932%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-printer/index.html"><span>Progress</span><wbr><span><span>Printer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-340353932%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-printer/index.html">ProgressPrinter</a>&nbsp;<span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>output<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/PrintStream.html">PrintStream</a><span class="token operator"> = </span>System.out<span class="token punctuation">, </span></span><span class="parameter ">verticalBar<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>if (System.getProperty("os.name").startsWith("Windows")) "|" else "│"</span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">Outputs plain lines. This is useful when there's no console, e.g. because we're redirected to a file or output is being captured by a CI tool, IDE, etc. Each unique message is printed with a timestamp from when the first report was received.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1386735901%2FClasslikes%2F1318301537" anchor-label="ProgressRelay" id="1386735901%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-relay/index.html"><span>Progress</span><wbr><span><span>Relay</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1386735901%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-relay/index.html">ProgressRelay</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">executor<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Executor.html">Executor</a><span class="token punctuation">, </span></span><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">Simply re-invokes the specified <a href="../../progress4j-utils/dev.progress4j.utils/-progress-relay/callback.html">callback</a> on the given <a href="../../progress4j-utils/dev.progress4j.utils/-progress-relay/executor.html">executor</a> with an immutable version of the report.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="270391597%2FClasslikes%2F1318301537" anchor-label="ProgressStatsAccumulator" id="270391597%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-stats-accumulator/index.html"><span>Progress</span><wbr><span>Stats</span><wbr><span><span>Accumulator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="270391597%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-stats-accumulator/index.html">ProgressStatsAccumulator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>windowSize<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html">Duration</a><span class="token operator"> = </span>Duration.ofSeconds(30)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>clock<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Clock.html">Clock</a><span class="token operator"> = </span>Clock.systemUTC()</span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">Sinks progress events and for determinate events, calculates how much progress was made in the past second over the given time window.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-756076767%2FClasslikes%2F1318301537" anchor-label="ProgressStreamCombiner" id="-756076767%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-stream-combiner/index.html"><span>Progress</span><wbr><span>Stream</span><wbr><span><span>Combiner</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-756076767%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-stream-combiner/index.html">ProgressStreamCombiner</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sum<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></div><div class="brief "><p class="paragraph">Combines multiple streams of progress reports into a single report with sub-reports and then sends it onwards to the <a href="../../progress4j-utils/dev.progress4j.utils/-progress-stream-combiner/callback.html">callback</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-379237358%2FClasslikes%2F1318301537" anchor-label="ProgressTrackerInvoker" id="-379237358%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-tracker-invoker/index.html"><span>Progress</span><wbr><span>Tracker</span><wbr><span><span>Invoker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-379237358%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-tracker-invoker/index.html">ProgressTrackerInvoker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a></span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">Encapsulates exception handling and synchronization.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1089473988%2FClasslikes%2F1318301537" anchor-label="ProgressTrackerResetter" id="1089473988%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-progress-tracker-resetter/index.html"><span>Progress</span><wbr><span>Tracker</span><wbr><span><span>Resetter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1089473988%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-progress-tracker-resetter/index.html">ProgressTrackerResetter</a><span class="token operator">&lt;</span><a href="-progress-tracker-resetter/index.html">T</a><span class="token operator"> : </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">factory<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html">Callable</a><span class="token operator">&lt;</span><a href="-progress-tracker-resetter/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">A callback that delegates a stream of reports to another callback that it creates, and re-creates when a completion is delivered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1713616314%2FClasslikes%2F1318301537" anchor-label="ThreeLevelProgressEmitter" id="-1713616314%2FClasslikes%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-three-level-progress-emitter/index.html"><span>Three</span><wbr><span>Level</span><wbr><span>Progress</span><wbr><span><span>Emitter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1713616314%2FClasslikes%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-three-level-progress-emitter/index.html">ThreeLevelProgressEmitter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token punctuation">, </span></span><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTracks<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">Builds <a href="../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a> objects that model an operation made up of several parallel sub-operations, each of which may itself have multiple steps. Such reports are often found in build systems that can execute multiple tasks in parallel, and where each task may need to do multiple sequential operations.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="912654714%2FFunctions%2F1318301537" anchor-label="forEachWithProgress" id="912654714%2FFunctions%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="for-each-with-progress.html"><span>for</span><wbr><span>Each</span><wbr><span>With</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="912654714%2FFunctions%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="for-each-with-progress.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="for-each-with-progress.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="for-each-with-progress.html"><span class="token function">forEachWithProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">action<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><a href="for-each-with-progress.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Runs the given <a href="for-each-with-progress.html">action</a> serially over the receiver collection, tracking progress and passing it to the <a href="for-each-with-progress.html">tracker</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1432760655%2FFunctions%2F1318301537" anchor-label="indeterminate" id="1432760655%2FFunctions%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="indeterminate.html"><span><span>indeterminate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1432760655%2FFunctions%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="indeterminate.html">T</a><span class="token operator">&gt; </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">.</span><a href="indeterminate.html"><span class="token function">indeterminate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="indeterminate.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="indeterminate.html">T</a></div><div class="brief "><p class="paragraph">Runs the given block with an indeterminate report at the start and a complete at the end (even for exceptional endings). If the callback is null the block is still run, but no progress events are emitted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-317402884%2FFunctions%2F1318301537" anchor-label="inputStreamWithProgress" id="-317402884%2FFunctions%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="input-stream-with-progress.html"><span>input</span><wbr><span>Stream</span><wbr><span>With</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-317402884%2FFunctions%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html">Path</a><span class="token punctuation">.</span><a href="input-stream-with-progress.html"><span class="token function">inputStreamWithProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html">InputStream</a></div><div class="brief "><p class="paragraph">Returns a tracked input stream initialized with the size of the file, byte units and if no base report is specified, the file name as the message.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="610332241%2FFunctions%2F1318301537" anchor-label="withProgress" id="610332241%2FFunctions%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-progress.html"><span>with</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="610332241%2FFunctions%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html">InputStream</a><span class="token punctuation">.</span><a href="with-progress.html"><span class="token function">withProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html">InputStream</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html">InputStream</a><span class="token punctuation">.</span><a href="with-progress.html"><span class="token function">withProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callback<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">progressMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html">InputStream</a></div><div class="brief "><p class="paragraph">Wraps an input stream with a filter that emits progress events as the stream is read.</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-progress.html"><span class="token function">withProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a><span class="token operator"> = </span>ProgressReport.create(null, size.toLong().coerceAtLeast(1))</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-progress.html"><span class="token function">withProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">progressMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a progress tracking iterator for the array that reports for each item iterated.</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-progress.html"><span class="token function">withProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a><span class="token operator"> = </span>ProgressReport.createIndeterminate()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Sends a set of progress reports for each item iterated over from the given <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a>. Because a stream of progress reports cannot start again after completion, the returned iterable may only be iterated over once regardless of the repeatability of the underlying iterable. If <a href="with-progress.html">baseReport</a> doesn't specify an expected size an attempt is made to calculate the size of the underlying structure being iterated over; this works for the built-in Java collections in most reasonable cases.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-progress.html"><span class="token function">withProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">progressMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Sends a set of progress reports for each item iterated over from the given <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a>. Because a stream of progress reports cannot start again after completion, the returned iterable may only be iterated over once regardless of the repeatability of the underlying iterable. An attempt is made to calculate the size of the underlying  structure being iterated over; this works for the built-in Java collections in most reasonable cases.</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-progress.html"><span class="token function">withProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a><span class="token operator"> = </span>ProgressReport.createIndeterminate()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-closeable-iterator/index.html">CloseableIterator</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Sends a progress report for each item that is iterated. Initialize <a href="with-progress.html">baseReport</a> with the expected size of the iterator for best effect. The returned iterator object can be cast to <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a> and will close the underlying iterator if <code class="lang-kotlin">close</code> is called.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-progress.html"><span class="token function">withProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">progressMessage<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-closeable-iterator/index.html">CloseableIterator</a><span class="token operator">&lt;</span><a href="with-progress.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Sends a progress report for each item that is iterated. The returned iterator object can be cast to <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a> and will close the underlying iterator if <code class="lang-kotlin">close</code> is called.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="703883221%2FFunctions%2F1318301537" anchor-label="withProgressTrackedFutures" id="703883221%2FFunctions%2F1318301537" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-utils:dokkaHtmlPartial/main" data-filterable-set=":progress4j-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-progress-tracked-futures.html"><span>with</span><wbr><span>Progress</span><wbr><span>Tracked</span><wbr><span><span>Futures</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="703883221%2FFunctions%2F1318301537"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-progress-tracked-futures.html">V</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CompletableFuture.html">CompletableFuture</a><span class="token operator">&lt;</span><a href="with-progress-tracked-futures.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-progress-tracked-futures.html"><span class="token function">withProgressTrackedFutures</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">baseReport<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/index.html">ProgressReport</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CompletableFuture.html">CompletableFuture</a><span class="token operator">&lt;</span><a href="with-progress-tracked-futures.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Registers a listener on each future such that progress events are emitted on the given <a href="with-progress-tracked-futures.html">tracker</a> (serially). Use this when you've kicked off a bunch of tasks on a thread pool and want to track their completion.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-progress-tracked-futures.html">V</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CompletableFuture.html">CompletableFuture</a><span class="token operator">&lt;</span><a href="with-progress-tracked-futures.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="with-progress-tracked-futures.html"><span class="token function">withProgressTrackedFutures</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracker<span class="token operator">: </span><a href="../../progress4j-api/dev.progress4j.api/-progress-report/-tracker/index.html">ProgressReport.Tracker</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Future.html">Future</a><span class="token operator">&lt;</span><a href="with-progress-tracked-futures.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

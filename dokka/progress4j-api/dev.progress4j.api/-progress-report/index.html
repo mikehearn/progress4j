@@ -1,0 +1,390 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ProgressReport</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            progress4j
+                    </a>            </div>
+            <div class="library-version">0.1
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":progress4j-api:dokkaHtmlPartial/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="progress4j-api::dev.progress4j.api/ProgressReport///PointingToDeclaration//620917080">
+  <div class="breadcrumbs"><a href="../../index.html">progress4j-api</a><span class="delimiter">/</span><a href="../index.html">dev.progress4j.api</a><span class="delimiter">/</span><span class="current">ProgressReport</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Progress</span><wbr><span><span>Report</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">ProgressReport</a></div><p class="paragraph">Exposes the progress of some operation independent of the details of how it's presented.</p><p class="paragraph"> A progress report may have a message, a measurement of completed vs expected total work units, a unit of measure for that work, and zero or more subreports. Together this lets you generate sophisticated hierarchical progress reports, potentially wrapping progress from a sub-operation or library you rely on. Reports are passed to trackers which consume them, usually to inform the user of what's going on. All the properties are optional (see below). </p><p class="paragraph"> Usually you will call <a href="create-indeterminate.html">createIndeterminate</a> or a variant to get an implementation representing the progress as of some moment in time, which will then be passed to a <a href="-tracker/index.html">ProgressReport.Tracker</a> that was passed in to the operation, perhaps via . As the operation advances new reports will be created (or a mutable report modified in-place, see below) and passed to the progress tracker again. </p><h2 class="">Properties</h2><a href="get-completed.html">getCompleted</a> and <a href="get-expected-total.html">getExpectedTotal</a> are measured in terms of the specific <a href="get-units.html">getUnits</a>. It's up to progress trackers to turn this into a percentage if they need it. An operation is expected to indicate completion (normally or exceptionally) by delivering a progress report in which <code class="lang-kotlin">completed</code> == <code class="lang-kotlin">expectedTotal</code>, and progress trackers may react to such a report by hiding their UI. Trackers may use the <code class="lang-kotlin">units</code> property to decide whether to show speed indicators, ETAs and other useful estimates. <p class="paragraph"> It's valid for one report to be followed by another in which <code class="lang-kotlin">completed</code> goes backwards, or <code class="lang-kotlin">expectedTotal</code> changes including by going backwards. This is useful if an operation ends in an error state, or if during the operation you discover there's more or less work to do. </p><p class="paragraph"> Reports may have a message. If the message is null, trackers are expected to either simply not show a message at all, or use a generic message like "Working", "Please wait" etc. If set the message should briefly describe the operation, e.g. "Unpacking files". The message should <i>not</i> include any of the following: </p><ol><li>Words like "Working", "Progress", "please wait" etc. Generic boilerplate is the responsibility of the tracker to render.</li><li>The total number of items e.g. "Unpacking 12 files". The total amount of work should be exposed via <a href="get-expected-total.html">getExpectedTotal</a>, and it's up to the tracker implementations to render the quantity in the UI if desired.</li><li>Text that changes with every single report e.g. "Unpacking foobar.txt". A stream of progress reports should have a consistent message. Although nothing stops you changing the message in every report, it can be distracting for messages to frequently change whilst the user is trying to read them. If you want to expose some notion of sub-tasks, see below.</li></ol><h2 class="">Indeterminate reports</h2> A work report that has <code class="lang-kotlin">complete</code> = 0 and <code class="lang-kotlin">expectedTotal</code> = 1 indicates an <i>indeterminate</i> progress report, in which how long the operation will take is unknown. A progress tracker will render it by showing e.g. a spinner animation to communicate that something is being done. If expectedTotal is higher than 1 then it is considered to be a measurable operation and a progress bar of some sort is a likely rendering. <h2 class="">Mutability</h2> A <a href="index.html">ProgressReport</a> is a read only view of a potentially changing report object. For the duration of a <a href="-tracker/report.html">report</a> call the report object isn't allowed to change, but once the <code class="lang-kotlin">report</code> callback method finishes an implementation of this interface may return new values from its properties. If you need to keep a copy of a report, use <a href="immutable-report.html">immutableReport</a>. Alternatively if you want to get a copy that you can then start editing in place, use <a href="mutable-report.html">mutableReport</a>. Mutable reports are useful for when you might need to report progress very frequently and don't wish to create excess garbage. In that situation it's up to the tracker to thin out reports to the frequency they need, and there are utilities in the <code class="lang-kotlin">
+dev.progress4j.utils</code> package to do this for you. <h2 class="">Hierarchical progress</h2> A progress report may have zero or more sub-reports. This allows you to report the progress of an operation that is made up of a tree of parallel sub-operations. There's a limit to how much detail a human can actually absorb, so most tracker implementations will elect to either ignore this information or to only show one or two levels deep in the tree. However there's no limit to how much detail you can report this way. <p class="paragraph"> Sub-reports are <i>ordered</i>. If you have two sub-operations proceeding in parallel, then the progress report from each one must always be assigned to the same index in the <a href="get-sub-reports.html">getSubReports</a> collection. If one task finishes earlier than the other then its slot should be set to null. Don't move reports from the same task to different slots, as trackers are allowed to assume stability and may map sub-report slots to e.g. stacked progress bars, tree view positions or other cases where it'd be annoying for tasks to jump around visually. It's up to you how sub-report progress is aggregated into <code class="lang-kotlin">completed</code> and <code class="lang-kotlin">expectedTotal</code>, if at all. There are utilities available to help you compose multiple streams of progress together using sub-reports, and it's recommended you use them if you wish to report hierarchical progress. </p><h2 class="">Extending reports with more information</h2><a href="index.html">ProgressReport</a> is an interface so you can easily create your own progress report objects that expose more information that makes sense for a generic schema. Don't use sub-reports to transmit things like per-item messages or images, instead extend this interface and add your own properties. <h2 class="">Errors, cancellation etc</h2> Progress reporting is deliberately simple and isn't meant to be a general framework for controlling tasks. Use some other system to implement task cancellation and error reporting.<h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-mutable-progress-report/index.html">MutableProgressReport</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1665850382%2FClasslikes%2F620917080" anchor-label="Trackable" id="-1665850382%2FClasslikes%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-trackable/index.html"><span><span>Trackable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1665850382%2FClasslikes%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-trackable/index.html">Trackable</a></div><div class="brief ">An object that generates progress reports.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1455110847%2FClasslikes%2F620917080" anchor-label="Tracker" id="1455110847%2FClasslikes%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-tracker/index.html"><span><span>Tracker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1455110847%2FClasslikes%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/FunctionalInterface.html"><span class="token annotation builtin">FunctionalInterface</span></a></div></div><span class="token keyword">interface </span><a href="-tracker/index.html">Tracker</a></div><div class="brief ">An object that receives progress reports from some other code that generates them.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="310972392%2FClasslikes%2F620917080" anchor-label="Units" id="310972392%2FClasslikes%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-units/index.html"><span><span>Units</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="310972392%2FClasslikes%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-units/index.html">Units</a></div><div class="brief ">What the units are for <a href="get-completed.html">getCompleted</a> and <a href="get-expected-total.html">getExpectedTotal</a>.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1743876511%2FFunctions%2F620917080" anchor-label="create" id="1743876511%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create.html"><span><span>create</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1743876511%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTotal<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTotal<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">completed<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTotal<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">completed<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span>units<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="-units/index.html">ProgressReport.Units</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTotal<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">completed<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span>units<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="-units/index.html">ProgressReport.Units</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span>subReports<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="index.html">ProgressReport</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="brief ">A convenience constructor that takes ints instead of longs.</div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTotal<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns an immutable progress report with no completed work units, <a href="-units/-a-b-s-t-r-a-c-t_-c-o-n-s-i-s-t-e-n-t/index.html">ABSTRACT_CONSISTENT</a> units and no sub-reports.</div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTotal<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">completed<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns an immutable progress report with <a href="-units/-a-b-s-t-r-a-c-t_-c-o-n-s-i-s-t-e-n-t/index.html">ABSTRACT_CONSISTENT</a> units and no sub-reports.</div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTotal<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">completed<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span>units<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="-units/index.html">ProgressReport.Units</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns an immutable progress report with no sub-reports.</div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedTotal<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">completed<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span>units<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="-units/index.html">ProgressReport.Units</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span>subReports<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html">Collection</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="index.html">ProgressReport</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns an immutable progress report.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1378593209%2FFunctions%2F620917080" anchor-label="createIndeterminate" id="1378593209%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-indeterminate.html"><span>create</span><wbr><span><span>Indeterminate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1378593209%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create-indeterminate.html"><span class="token function">createIndeterminate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns an immutable indeterminate progress report with no message or sub-reports.</div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="create-indeterminate.html"><span class="token function">createIndeterminate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns an immutable indeterminate progress report with no sub-reports.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1735819541%2FFunctions%2F620917080" anchor-label="getComplete" id="1735819541%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-complete.html"><span>get</span><wbr><span><span>Complete</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1735819541%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-complete.html"><span class="token function">getComplete</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief ">Returns true when this operation is complete.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-923211391%2FFunctions%2F620917080" anchor-label="getCompleted" id="-923211391%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-completed.html"><span>get</span><wbr><span><span>Completed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-923211391%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-completed.html"><span class="token function">getCompleted</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief ">Units of work done so far in the operation.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="861024256%2FFunctions%2F620917080" anchor-label="getExpectedTotal" id="861024256%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-expected-total.html"><span>get</span><wbr><span>Expected</span><wbr><span><span>Total</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="861024256%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-expected-total.html"><span class="token function">getExpectedTotal</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief ">The current belief about the total units for the entire operation (i.e.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="278634897%2FFunctions%2F620917080" anchor-label="getIndeterminate" id="278634897%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-indeterminate.html"><span>get</span><wbr><span><span>Indeterminate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="278634897%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-indeterminate.html"><span class="token function">getIndeterminate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief ">Returns true to indicate that this operation should be treated as of indeterminate length.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="274639621%2FFunctions%2F620917080" anchor-label="getMessage" id="274639621%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-message.html"><span>get</span><wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="274639621%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-message.html"><span class="token function">getMessage</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div><div class="brief ">String intended to be translated into the user's local language but may be a language-independent message suitable for printing next to a progress indicator of some sort, e.g.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1475719825%2FFunctions%2F620917080" anchor-label="getSubReports" id="-1475719825%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-sub-reports.html"><span>get</span><wbr><span>Sub</span><wbr><span><span>Reports</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1475719825%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-sub-reports.html"><span class="token function">getSubReports</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="index.html">ProgressReport</a><span class="token operator">&gt;</span></div><div class="brief ">An ordered list of progress reports that provide further information on the progress of the current step represented by this report.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1960933283%2FFunctions%2F620917080" anchor-label="getUnits" id="-1960933283%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-units.html"><span>get</span><wbr><span><span>Units</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1960933283%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-units.html"><span class="token function">getUnits</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="-units/index.html">ProgressReport.Units</a></div><div class="brief ">What units `getCompleted` and `getExpectedTotal` are measured in.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-369767218%2FFunctions%2F620917080" anchor-label="immutableReport" id="-369767218%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="immutable-report.html"><span>immutable</span><wbr><span><span>Report</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-369767218%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="immutable-report.html"><span class="token function">immutableReport</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns an immutable version of the progress report.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1738934166%2FFunctions%2F620917080" anchor-label="mutableReport" id="-1738934166%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mutable-report.html"><span>mutable</span><wbr><span><span>Report</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1738934166%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="mutable-report.html"><span class="token function">mutableReport</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="../-mutable-progress-report/index.html">MutableProgressReport</a></div><div class="brief ">Returns a mutable copy of the progress report.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1263338915%2FFunctions%2F620917080" anchor-label="withCompleted" id="1263338915%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-completed.html"><span>with</span><wbr><span><span>Completed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1263338915%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="with-completed.html"><span class="token function">withCompleted</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns a copy of this report with the specified value for completed.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2054469026%2FFunctions%2F620917080" anchor-label="withExpectedTotal" id="2054469026%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-expected-total.html"><span>with</span><wbr><span>Expected</span><wbr><span><span>Total</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2054469026%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="with-expected-total.html"><span class="token function">withExpectedTotal</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns a copy of this report with the specified expected total.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-587929792%2FFunctions%2F620917080" anchor-label="withIncremented" id="-587929792%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-incremented.html"><span>with</span><wbr><span><span>Incremented</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-587929792%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="with-incremented.html"><span class="token function">withIncremented</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns a copy of this report with the <a href="get-completed.html">getCompleted</a> incremented by <code class="lang-kotlin">value</code> and capped to <a href="get-expected-total.html">getExpectedTotal</a>}.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="945079198%2FFunctions%2F620917080" anchor-label="withMessage" id="945079198%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-message.html"><span>with</span><wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="945079198%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="with-message.html"><span class="token function">withMessage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>message<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns a copy of this report with the specified message, or null to indicate no message.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-601774663%2FFunctions%2F620917080" anchor-label="withSubReport" id="-601774663%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-sub-report.html"><span>with</span><wbr><span>Sub</span><wbr><span><span>Report</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-601774663%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="with-sub-report.html"><span class="token function">withSubReport</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span>subReport<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="index.html">ProgressReport</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns a copy of this report with the specified sub-report replaced.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-906592620%2FFunctions%2F620917080" anchor-label="withSubReports" id="-906592620%2FFunctions%2F620917080" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":progress4j-api:dokkaHtmlPartial/main" data-filterable-set=":progress4j-api:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-sub-reports.html"><span>with</span><wbr><span>Sub</span><wbr><span><span>Reports</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-906592620%2FFunctions%2F620917080"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":progress4j-api:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="with-sub-reports.html"><span class="token function">withSubReports</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span>subReports<span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html">Collection</a><span class="token operator">&lt;</span><span class="token keyword">out </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/Nullable///PointingToDeclaration/"><span class="token annotation builtin">Nullable</span></span>&nbsp;</span><a href="index.html">ProgressReport</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span><span class="token annotation builtin">@</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span>&nbsp;</span><a href="index.html">ProgressReport</a></div><div class="brief ">Returns a copy of this report with the specified sub-reports.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

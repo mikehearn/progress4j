@@ -1,0 +1,1187 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://www.progress4j.org/quickstart/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../json/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>Quickstart - progress4j</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Titillium Web";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quickstart" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="progress4j" class="md-header__button md-logo" aria-label="progress4j" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            progress4j
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quickstart
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mikehearn/progress4j" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mikehearn/progress4j
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="progress4j" class="md-nav__button md-logo" aria-label="progress4j" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    progress4j
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mikehearn/progress4j" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mikehearn/progress4j
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-progressreport" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding ProgressReport
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expose-progress-reports-from-an-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expose progress reports from an object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-progressreporttracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using ProgressReport.Tracker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-progress-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate progress reports
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Generate progress reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterating-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterating Collections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-inputstreams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing InputStreams
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-futures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with Futures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-mutable-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with Mutable Reports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hierarchical-progress-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hierarchical Progress Reports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-progress-report-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controlling Progress Report Frequency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminalprogresstracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      TerminalProgressTracker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JSON Format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javadoc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Javadoc (API Module)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dokka (Full)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">&para;</a></h1>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<p>Before diving in, you can explore the API in two ways:</p>
+<ul>
+<li><a href="../javadoc/">Javadoc for Java users</a> - Core API documentation with traditional Java interface documentation</li>
+<li><a href="../dokka/">KDoc for Kotlin users</a> - Full project documentation including Kotlin code and utilities</li>
+</ul>
+<h2 id="add-dependencies">Add dependencies<a class="headerlink" href="#add-dependencies" title="Permanent link">&para;</a></h2>
+<p>A minimal usage requires the core API:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle (Kotlin DSL)</label><label for="__tabbed_1_2">Maven</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">api</span><span class="p">(</span><span class="s">&quot;dev.progress4j:progress-api:0.1&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>dev.progress4j<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>progress4j-api<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;version&gt;</span>0.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The JPMS module name is <code>dev.progress4j.api</code>. This defines the core interface types <code>ProgressReport</code> and <code>MutableProgressReport</code>, which
+come with default implementations.</p>
+<p>The utilities library is convenient for generating progress reports.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Gradle (Kotlin DSL)</label><label for="__tabbed_2_2">Maven</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">api</span><span class="p">(</span><span class="s">&quot;dev.progress4j:progress-utils:0.1&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>dev.progress4j<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>progress4j-utils<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;version&gt;</span>0.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The JPMS module name is <code>dev.progress4j.utils</code>, and it depends on the Kotlin standard library. </p>
+<p>For terminal rendering, you can use the terminal module:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Gradle (Kotlin DSL)</label><label for="__tabbed_3_2">Maven</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">api</span><span class="p">(</span><span class="s">&quot;dev.progress4j:progress-terminal:0.1&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>dev.progress4j<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>progress4j-terminal<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;version&gt;</span>0.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="understanding-progressreport">Understanding ProgressReport<a class="headerlink" href="#understanding-progressreport" title="Permanent link">&para;</a></h2>
+<p>A <code>ProgressReport</code> represents a snapshot of an operation's progress at a specific point in time. It contains:</p>
+<ul>
+<li><strong>Message</strong>: A brief description of the operation (e.g., "Unpacking files")</li>
+<li><strong>Completed</strong>: Units of work completed so far</li>
+<li><strong>ExpectedTotal</strong>: Total units of work expected</li>
+<li><strong>Units</strong>: The type of units being measured (ABSTRACT_CONSISTENT, ABSTRACT_INCONSISTENT, or BYTES)</li>
+<li><strong>SubReports</strong>: Optional hierarchical sub-reports for nested operations</li>
+</ul>
+<p>The API provides several factory methods to create reports:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Java</label><label for="__tabbed_4_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a measurable progress report</span>
+<span class="n">ProgressReport</span><span class="w"> </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Downloading files&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">);</span>
+
+<span class="c1">// Create an indeterminate progress report (spinning wheel)</span>
+<span class="n">ProgressReport</span><span class="w"> </span><span class="n">indeterminate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">createIndeterminate</span><span class="p">(</span><span class="s">&quot;Initializing&quot;</span><span class="p">);</span>
+
+<span class="c1">// Create a completed report</span>
+<span class="n">ProgressReport</span><span class="w"> </span><span class="n">complete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Operation complete&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a measurable progress report</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Downloading files&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">)</span>
+
+<span class="c1">// Create an indeterminate progress report (spinning wheel)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">indeterminate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">createIndeterminate</span><span class="p">(</span><span class="s">&quot;Initializing&quot;</span><span class="p">)</span>
+
+<span class="c1">// Create a completed report</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">complete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Operation complete&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="expose-progress-reports-from-an-object">Expose progress reports from an object<a class="headerlink" href="#expose-progress-reports-from-an-object" title="Permanent link">&para;</a></h2>
+<p>A <code>ProgressReport.Tracker</code> implementation receives reports from a <code>ProgressReport.Trackable</code>. You don't have to use these interfaces,
+but it's nice to standardize.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Java</label><label for="__tabbed_5_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">dev.progress4j.api.ProgressReport</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Example</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Trackable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">progressTracker</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Example</span><span class="w"> </span><span class="nf">trackProgressWith</span><span class="p">(</span><span class="nd">@NotNull</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">tracker</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">progressTracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tracker</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">reportProgress</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">completed</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">progressTracker</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">progressTracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Processing items&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">completed</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">dev.progress4j.api.ProgressReport</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">Example</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Trackable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">progressTracker</span><span class="p">:</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="o">?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">trackProgressWith</span><span class="p">(</span><span class="n">tracker</span><span class="p">:</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="p">):</span><span class="w"> </span><span class="n">Example</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">progressTracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tracker</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">reportProgress</span><span class="p">(</span><span class="n">completed</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">progressTracker</span><span class="o">?.</span><span class="na">report</span><span class="p">(</span>
+<span class="w">            </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Processing items&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">completed</span><span class="p">)</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="using-progressreporttracker">Using ProgressReport.Tracker<a class="headerlink" href="#using-progressreporttracker" title="Permanent link">&para;</a></h2>
+<p>A <code>ProgressReport.Tracker</code> is the consumer of progress reports. The basic interface is simple:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nc">Tracker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="nd">@NotNull</span><span class="w"> </span><span class="n">ProgressReport</span><span class="w"> </span><span class="n">progress</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Here's a simple tracker implementation that prints progress to standard output:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Java</label><label for="__tabbed_6_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">simpleTracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">progress</span><span class="p">.</span><span class="na">getIndeterminate</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="n">progress</span><span class="p">.</span><span class="na">getCompleted</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">progress</span><span class="p">.</span><span class="na">getExpectedTotal</span><span class="p">());</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;%s: %d%%\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">progress</span><span class="p">.</span><span class="na">getMessage</span><span class="p">(),</span><span class="w"> </span><span class="n">percentage</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;%s: Working...\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">progress</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">simpleTracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">progress</span><span class="p">.</span><span class="na">indeterminate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">progress</span><span class="p">.</span><span class="na">completed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">progress</span><span class="p">.</span><span class="na">expectedTotal</span><span class="p">).</span><span class="na">toInt</span><span class="p">()</span>
+<span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">${</span><span class="n">progress</span><span class="p">.</span><span class="na">message</span><span class="si">}</span><span class="s">: </span><span class="si">$</span><span class="n">percentage</span><span class="s">%&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">${</span><span class="n">progress</span><span class="p">.</span><span class="na">message</span><span class="si">}</span><span class="s">: Working...&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>For terminal display, use the <code>TerminalProgressTracker</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Java</label><label for="__tabbed_7_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">tracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TerminalProgressTracker</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">tracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TerminalProgressTracker</span><span class="p">.</span><span class="na">get</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="generate-progress-reports">Generate progress reports<a class="headerlink" href="#generate-progress-reports" title="Permanent link">&para;</a></h2>
+<h3 id="iterating-collections">Iterating Collections<a class="headerlink" href="#iterating-collections" title="Permanent link">&para;</a></h3>
+<p>Work often comes in the form of iterable things like lists. There's a utility method to make iterators automatically emit progress
+as each item is traversed:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Java</label><label for="__tabbed_8_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">trackListProgress</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">tracker</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">withProgress</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing items&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Do some slow work with each item</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="nf">trackListProgress</span><span class="p">(</span><span class="n">items</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">tracker</span><span class="p">:</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">withProgress</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing items&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Do some slow work with each item</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="processing-inputstreams">Processing InputStreams<a class="headerlink" href="#processing-inputstreams" title="Permanent link">&para;</a></h3>
+<p>When reading files or streams, you can track the progress based on bytes read:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Java</label><label for="__tabbed_9_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Track progress on a file input stream</span>
+<span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withProgress</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;build.gradle.kts&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">tracker</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">512</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Process bytes</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Or more concisely for files:</span>
+<span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputStreamWithProgress</span><span class="p">(</span><span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;some-file.txt&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Reading file&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Process the stream</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Track progress on a file input stream</span>
+<span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;build.gradle.kts&quot;</span><span class="p">).</span><span class="na">withProgress</span><span class="p">(</span><span class="n">tracker</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">(</span><span class="m">512</span><span class="p">)</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Process bytes</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Or more concisely for files:</span>
+<span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;some-file.txt&quot;</span><span class="p">).</span><span class="na">inputStreamWithProgress</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Reading file&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="c1">// Process the stream</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="working-with-futures">Working with Futures<a class="headerlink" href="#working-with-futures" title="Permanent link">&para;</a></h3>
+<p>Track progress when working with asynchronous operations:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Java</label><label for="__tabbed_10_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">CompletableFuture</span><span class="o">&lt;</span><span class="n">Result</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">futures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* your futures */</span><span class="p">;</span>
+<span class="n">futures</span><span class="p">.</span><span class="na">withProgressTrackedFutures</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing tasks in parallel&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">CompletableFuture</span><span class="p">::</span><span class="n">join</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">futures</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CompletableFuture</span><span class="o">&lt;</span><span class="n">Result</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* your futures */</span>
+<span class="n">futures</span><span class="p">.</span><span class="na">withProgressTrackedFutures</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing tasks in parallel&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">join</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="working-with-mutable-reports">Working with Mutable Reports<a class="headerlink" href="#working-with-mutable-reports" title="Permanent link">&para;</a></h2>
+<p>For cases where you want to update a report in place (to reduce garbage creation):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Java</label><label for="__tabbed_11_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">MutableProgressReport</span><span class="w"> </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Loading&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">report</span><span class="p">);</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Do work</span>
+<span class="w">    </span><span class="n">report</span><span class="p">.</span><span class="na">setCompleted</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">report</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Loading&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+<span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Do work</span>
+<span class="w">    </span><span class="n">report</span><span class="p">.</span><span class="na">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1L</span>
+<span class="w">    </span><span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="hierarchical-progress-reports">Hierarchical Progress Reports<a class="headerlink" href="#hierarchical-progress-reports" title="Permanent link">&para;</a></h2>
+<p>Progress4j supports hierarchical progress reporting for complex operations:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Java</label><label for="__tabbed_12_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a top-level report</span>
+<span class="n">MutableProgressReport</span><span class="w"> </span><span class="n">mainReport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Main operation&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">mainReport</span><span class="p">);</span>
+
+<span class="c1">// First subtask</span>
+<span class="n">MutableProgressReport</span><span class="w"> </span><span class="n">subTask1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Subtask 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">ProgressReport</span><span class="o">&gt;</span><span class="w"> </span><span class="n">subReports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="n">subReports</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">subTask1</span><span class="p">);</span>
+<span class="n">mainReport</span><span class="p">.</span><span class="na">setSubReports</span><span class="p">(</span><span class="n">subReports</span><span class="p">);</span>
+
+<span class="c1">// Update subtask progress</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Do work</span>
+<span class="w">    </span><span class="n">subTask1</span><span class="p">.</span><span class="na">setCompleted</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">mainReport</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Main task progress update</span>
+<span class="n">mainReport</span><span class="p">.</span><span class="na">setCompleted</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">mainReport</span><span class="p">);</span>
+
+<span class="c1">// Second subtask (replacing the first in the reports list)</span>
+<span class="n">MutableProgressReport</span><span class="w"> </span><span class="n">subTask2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Subtask 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="n">subReports</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">subTask2</span><span class="p">);</span>
+<span class="n">mainReport</span><span class="p">.</span><span class="na">setSubReports</span><span class="p">(</span><span class="n">subReports</span><span class="p">);</span>
+
+<span class="c1">// ...and so on</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a top-level report</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">mainReport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Main operation&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">mainReport</span><span class="p">)</span>
+
+<span class="c1">// First subtask</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">subTask1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Subtask 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">subReports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="o">&lt;</span><span class="n">ProgressReport?&gt;</span><span class="p">(</span><span class="n">subTask1</span><span class="p">)</span>
+<span class="n">mainReport</span><span class="p">.</span><span class="na">subReports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subReports</span>
+
+<span class="c1">// Update subtask progress</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Do work</span>
+<span class="w">    </span><span class="n">subTask1</span><span class="p">.</span><span class="na">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">).</span><span class="na">toLong</span><span class="p">()</span>
+<span class="w">    </span><span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">mainReport</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Main task progress update</span>
+<span class="n">mainReport</span><span class="p">.</span><span class="na">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="n">tracker</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">mainReport</span><span class="p">)</span>
+
+<span class="c1">// Second subtask (replacing the first in the reports list)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">subTask2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Subtask 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+<span class="n">subReports</span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subTask2</span>
+<span class="n">mainReport</span><span class="p">.</span><span class="na">subReports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subReports</span>
+
+<span class="c1">// ...and so on</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>For simplified hierarchical progress generation, use the <code>ThreeLevelProgressEmitter</code> from the utils package:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">emitter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ThreeLevelProgressEmitter</span><span class="p">(</span>
+<span class="w">    </span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;Main operation&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">expectedTasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Units</span><span class="p">.</span><span class="na">ABSTRACT_CONSISTENT</span>
+<span class="p">)</span>
+
+<span class="n">emitter</span><span class="p">.</span><span class="na">startTask</span><span class="p">(</span><span class="s">&quot;First subtask&quot;</span><span class="p">)</span>
+<span class="c1">// Do work for first subtask</span>
+<span class="n">emitter</span><span class="p">.</span><span class="na">completeTask</span><span class="p">()</span>
+
+<span class="n">emitter</span><span class="p">.</span><span class="na">startTask</span><span class="p">(</span><span class="s">&quot;Second subtask&quot;</span><span class="p">)</span>
+<span class="c1">// Do work for second subtask, possibly emitting subtask progress</span>
+<span class="n">emitter</span><span class="p">.</span><span class="na">emitDetail</span><span class="p">(</span><span class="s">&quot;Processing file&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<span class="c1">// More work...</span>
+<span class="n">emitter</span><span class="p">.</span><span class="na">completeTask</span><span class="p">()</span>
+
+<span class="n">emitter</span><span class="p">.</span><span class="na">startTask</span><span class="p">(</span><span class="s">&quot;Third subtask&quot;</span><span class="p">)</span>
+<span class="c1">// Do work for third subtask</span>
+<span class="n">emitter</span><span class="p">.</span><span class="na">completeTask</span><span class="p">()</span>
+
+<span class="c1">// Mark overall operation as complete</span>
+<span class="n">emitter</span><span class="p">.</span><span class="na">complete</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="controlling-progress-report-frequency">Controlling Progress Report Frequency<a class="headerlink" href="#controlling-progress-report-frequency" title="Permanent link">&para;</a></h2>
+<p>For operations that might generate too many progress updates, use a <code>ProgressPacer</code> to throttle them:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Java</label><label for="__tabbed_14_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a pacer that emits a maximum of 30 updates per second</span>
+<span class="n">ProgressPacer</span><span class="w"> </span><span class="n">pacer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProgressPacer</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="mf">30.0f</span><span class="p">);</span>
+
+<span class="c1">// Use the pacer instead of the original tracker</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1000000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Very frequent updates that would overwhelm UI</span>
+<span class="w">    </span><span class="n">pacer</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Fast operation&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Create a pacer that emits a maximum of 30 updates per second</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">pacer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProgressPacer</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="m">30.0f</span><span class="p">)</span>
+
+<span class="c1">// Use the pacer instead of the original tracker</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="m">1000000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Very frequent updates that would overwhelm UI</span>
+<span class="w">    </span><span class="n">pacer</span><span class="p">.</span><span class="na">report</span><span class="p">(</span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Fast operation&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1000000</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">// Optionally close the pacer when done</span>
+<span class="n">pacer</span><span class="p">.</span><span class="na">close</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="terminalprogresstracker">TerminalProgressTracker<a class="headerlink" href="#terminalprogresstracker" title="Permanent link">&para;</a></h2>
+<p>The <code>TerminalProgressTracker</code> provides an attractive terminal UI with animated progress bars:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Java</label><label for="__tabbed_15_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Get the global terminal tracker instance</span>
+<span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">tracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TerminalProgressTracker</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+
+<span class="c1">// Use it for your operations</span>
+<span class="n">processItems</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">tracker</span><span class="p">);</span>
+
+<span class="c1">// If you need to get a reference to close it when done:</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tracker</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">((</span><span class="n">AutoCloseable</span><span class="p">)</span><span class="w"> </span><span class="n">tracker</span><span class="p">).</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Handle exception</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// Get the global terminal tracker instance</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">tracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TerminalProgressTracker</span><span class="p">.</span><span class="na">get</span><span class="p">()</span>
+
+<span class="c1">// Use it for your operations</span>
+<span class="n">processItems</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">tracker</span><span class="p">)</span>
+
+<span class="c1">// If you need to get a reference to close it when done:</span>
+<span class="p">(</span><span class="n">tracker</span><span class="w"> </span><span class="k">as?</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="p">)</span><span class="o">?.</span><span class="na">close</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The terminal tracker features:
+- Animated Unicode spinner
+- Color-coded progress bars
+- Time elapsed display
+- Support for hierarchical progress (up to 3 levels)
+- Automatic handling of terminal output (System.out)</p>
+<h2 id="complete-example">Complete Example<a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Java</label><label for="__tabbed_16_2">Kotlin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">dev.progress4j.api.ProgressReport</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dev.progress4j.terminal.TerminalProgressTracker</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import static</span><span class="w"> </span><span class="nn">dev.progress4j.utils.ProgressGenerators.withProgress</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Example</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ProgressReport</span><span class="p">.</span><span class="na">Tracker</span><span class="w"> </span><span class="n">tracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TerminalProgressTracker</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;four&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;five&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Process items with progress tracking</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">withProgress</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing items&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Processing: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Simulate work</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">dev.progress4j.api.ProgressReport</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">dev.progress4j.terminal.TerminalProgressTracker</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">dev.progress4j.utils.withProgress</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">tracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TerminalProgressTracker</span><span class="p">.</span><span class="na">get</span><span class="p">()</span>
+
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;four&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;five&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Process items with progress tracking</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">withProgress</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Processing items&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Processing: </span><span class="si">$</span><span class="n">item</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="m">500</span><span class="p">)</span><span class="w"> </span><span class="c1">// Simulate work</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "content.code.annotate", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
