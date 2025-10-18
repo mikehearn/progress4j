@@ -450,6 +450,10 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
         override fun println(x: String?) {
             terminal.println(x)
         }
+
+        override fun println(x: Any?) {
+            terminal.println(x)
+        }
     }
 
     private class RedirectingTerminalInterface(
