@@ -2,18 +2,20 @@ package dev.progress4j.utils
 
 import dev.progress4j.api.ProgressReport
 import java.io.PrintStream
+import java.util.function.Consumer
 import kotlin.math.roundToInt
 
 /**
- * Emits OSC 9;4 progress bar escape codes for terminals that support them.
+ * Emits OSC 9;4 progress bar escape codes for terminals that support them. These are used to render terminal-native progress bars
+ * that appear in the tab.
  *
  * Format: ESC ] 9 ; 4 ; <state> ; <progress> BEL
  * Example for 15%: "\u001B]9;4;1;15\u0007"
  *
- * @param output The print stream to write escape codes to, defaults to [System.out].
+ * @param printer The function that prints the escape, defaults to `System.out.print`.
  */
 class OscProgressBarTracker @JvmOverloads constructor(
-    private val output: PrintStream = System.out
+    private val printer: Consumer<String> = Consumer { print(it) }
 ) : ProgressReport.Tracker {
     private var lastPercent: Int? = null
     private var lastState: Int? = null
@@ -55,8 +57,7 @@ class OscProgressBarTracker @JvmOverloads constructor(
         }
         lastState = state
         lastPercent = percent
-        output.print("\u001B]9;4;$state;$percent\u0007")
-        output.flush()
+        printer.accept("\u001B]9;4;$state;$percent\u0007")
     }
 
     private object State {

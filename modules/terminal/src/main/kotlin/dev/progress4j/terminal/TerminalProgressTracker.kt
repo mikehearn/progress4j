@@ -20,6 +20,7 @@ import dev.progress4j.utils.ProgressStatsAccumulator
 import dev.progress4j.utils.ProgressTrackerInvoker
 import dev.progress4j.utils.ProgressTrackerResetter
 import java.io.PrintStream
+import java.util.function.Consumer
 import kotlin.concurrent.thread
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
@@ -68,7 +69,12 @@ import kotlin.time.toJavaDuration
 @OptIn(ExperimentalTime::class)
 class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, AutoCloseable {
     private val startTime = TimeSource.Monotonic.markNow()
-    private val oscTracker = OscProgressBarTracker()
+    private val oscTracker = terminal.terminalInterface.let { ti ->
+        if (ti is RedirectingTerminalInterface)
+            OscProgressBarTracker { ti.stdOut.print(it) }
+        else
+            null
+    }
     private val shutdownHook = thread(name = "Terminal progress tracker shutdown hook", start = false) {
         close(dueToJVMShutdown = true)
     }
@@ -240,7 +246,6 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
     }
 
     override fun report(progress: ProgressReport) {
-        oscTracker.report(progress)
         val running = state.locked {
             if (!started) {
                 started = true
@@ -249,6 +254,7 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
             running
         }
 
+        oscTracker?.report(progress)
         if (progress.complete)
             close()
         else if (running)
@@ -459,9 +465,12 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
         }
     }
 
-    private class RedirectingTerminalInterface(
-        private val stdOut: PrintStream,
-        private val stdErr: PrintStream,
+    /**
+     * A wrapper around an underlying terminal interface that
+     */
+    class RedirectingTerminalInterface(
+        val stdOut: PrintStream,
+        val stdErr: PrintStream,
         private val delegate: TerminalInterface
     ) : TerminalInterface by delegate {
         override fun completePrintRequest(request: PrintRequest) {
