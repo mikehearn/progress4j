@@ -14,6 +14,7 @@ import com.github.ajalt.mordant.widgets.Spinner
 import com.github.ajalt.mordant.widgets.Text
 import com.github.ajalt.mordant.widgets.progress.*
 import dev.progress4j.api.ProgressReport
+import dev.progress4j.utils.OscProgressBarTracker
 import dev.progress4j.utils.ProgressPacer
 import dev.progress4j.utils.ProgressStatsAccumulator
 import dev.progress4j.utils.ProgressTrackerInvoker
@@ -67,6 +68,7 @@ import kotlin.time.toJavaDuration
 @OptIn(ExperimentalTime::class)
 class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, AutoCloseable {
     private val startTime = TimeSource.Monotonic.markNow()
+    private val oscTracker = OscProgressBarTracker()
     private val shutdownHook = thread(name = "Terminal progress tracker shutdown hook", start = false) {
         close(dueToJVMShutdown = true)
     }
@@ -238,6 +240,7 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
     }
 
     override fun report(progress: ProgressReport) {
+        oscTracker.report(progress)
         val running = state.locked {
             if (!started) {
                 started = true

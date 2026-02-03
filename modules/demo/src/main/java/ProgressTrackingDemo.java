@@ -1,5 +1,6 @@
 import dev.progress4j.api.ProgressReport;
 import dev.progress4j.terminal.TerminalProgressTracker;
+import dev.progress4j.utils.OscProgressBarTracker;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,7 +12,7 @@ import static dev.progress4j.utils.ProgressGenerators.withProgress;
 
 public class ProgressTrackingDemo {
     public static void main(String[] args) throws InterruptedException, IOException {
-        ProgressReport.Tracker tracker = TerminalProgressTracker.get();
+        ProgressReport.Tracker tracker = selectTracker(args);
 
         // A list of work.
         var items = List.of("one", "two", "three", "four", "five", "six", "seven", "eight", "nine");
@@ -20,6 +21,20 @@ public class ProgressTrackingDemo {
         trackInputStreamProgress(tracker);
 
         // There are also generators for iterators, iterables, arrays, Collection<CompletableFuture<?>> and more.
+    }
+
+    private static ProgressReport.Tracker selectTracker(String[] args) {
+        OscProgressBarTracker osc = new OscProgressBarTracker();
+        ProgressReport.Tracker terminal = TerminalProgressTracker.get();
+        for (var arg : args) {
+            if ("--osc".equals(arg)) {
+                return progress -> {
+                    terminal.report(progress);
+                    osc.report(progress);
+                };
+            }
+        }
+        return terminal;
     }
 
     private static void trackInputStreamProgress(ProgressReport.Tracker tracker) throws IOException, InterruptedException {
