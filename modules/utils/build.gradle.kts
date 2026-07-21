@@ -1,13 +1,16 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("jvm") version "1.9.20"
+    kotlin("jvm") version "2.4.10"
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
 
     // Better test output on the command line.
-    id("com.adarshr.test-logger") version "3.0.0"
+    id("com.adarshr.test-logger") version "4.0.0"
 
     // Viewing the task graph.
     id("com.dorongold.task-tree") version "2.1.0"
@@ -66,10 +69,11 @@ tasks.withType<JavaCompile> {
 
 // Make Kotlin use the same JDK as Java.
 tasks.withType<KotlinJvmCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "17"
-        languageVersion = "1.7"
-        freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn", "-Xjvm-default=all")
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+        languageVersion.set(KotlinVersion.KOTLIN_2_0)
+        jvmDefault.set(JvmDefaultMode.NO_COMPATIBILITY)
+        freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
     }
 }
 
