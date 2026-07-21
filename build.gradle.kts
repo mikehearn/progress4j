@@ -4,7 +4,7 @@ import org.jetbrains.dokka.gradle.DokkaTaskPartial
 
 plugins {
     // Need the kotlin plugin for Dokka to work.
-    kotlin("jvm") version "1.9.20"
+    kotlin("jvm") version "2.4.10"
 
     // Dokka for documentation site generation.
     id("org.jetbrains.dokka") version "1.9.20"

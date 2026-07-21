@@ -3,7 +3,7 @@ plugins {
     `java-library`
 
     // Better test output on the command line.
-    id("com.adarshr.test-logger") version "3.0.0"
+    id("com.adarshr.test-logger") version "4.0.0"
 
     // Viewing the task graph.
     id("com.dorongold.task-tree") version "2.1.0"
