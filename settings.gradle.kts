@@ -8,8 +8,6 @@ pluginManagement {
     val dokkaVersion: String by settings
     plugins {
         id("org.jetbrains.dokka") version dokkaVersion
-        // Enable automatic JDK provisioning via Foojay resolver
-        id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
     }
 }
 
