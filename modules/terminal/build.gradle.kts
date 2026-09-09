@@ -33,6 +33,7 @@ java {
 dependencies {
     api(project(":progress4j-api"))
     implementation(project(":progress4j-utils"))
+    testImplementation(kotlin("test"))
 
     // Colourful terminal output.
     api(libs.com.github.ajalt.mordant)

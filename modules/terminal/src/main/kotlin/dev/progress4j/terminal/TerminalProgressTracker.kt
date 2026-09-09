@@ -354,6 +354,22 @@ class TerminalProgressTracker(val terminal: Terminal) : ProgressReport.Tracker, 
         private var globalTracker: TerminalProgressTracker? = null
 
         /**
+         * Returns a reusable animated tracker that writes only to [output], without replacing or writing to [System.out].
+         * The caller is responsible for ensuring the output is an interactive terminal and closing the returned tracker.
+         */
+        @JvmStatic
+        @JvmOverloads
+        fun forOutput(output: PrintStream, colors: Boolean = true): ProgressReport.Tracker {
+            val delegate = Terminal().terminalInterface
+            val terminal = Terminal(
+                ansiLevel = if (colors) AnsiLevel.TRUECOLOR else AnsiLevel.NONE,
+                interactive = true,
+                terminalInterface = RedirectingTerminalInterface(output, output, delegate)
+            )
+            return ProgressTrackerInvoker.wrap(ProgressTrackerResetter { TerminalProgressTracker(terminal) })
+        }
+
+        /**
          * Returns a progress tracker that will show an animated [TerminalProgressTracker] whilst redirecting [System.out] so that it prints
          * above the animated bar. The returned tracker is thread safe.
          */
